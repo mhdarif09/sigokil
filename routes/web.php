@@ -1,14 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\KeranjangController;
 
 Route::get('/', function () {
     return view('index');
 });
 
-Route::get('/Beranda', function () {
-    return view('Beranda');
-});
 
 Route::get('/cart', function () {
     return view('keranjang.cart');
@@ -26,9 +24,9 @@ Route::get('/pembayaran', function () {
     return view('keranjang.pembayaran');
 });
 
-Route::get('/keranjang', function () {
-    return view('keranjang.home');
-});
+Route::get('/keranjang', [KeranjangController::class, 'index'])->name('keranjang.home');
+
+
 
 Route::get('/Pesanan_saya', function () {
     return view('Pesanan_saya');

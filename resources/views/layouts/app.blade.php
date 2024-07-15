@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
@@ -9,68 +9,66 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
-
     <!-- Scripts -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    @vite('resources/js/app.js')
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- Alpine.js -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <!-- Styles -->
+    @vite('resources/css/app.css')
 </head>
-<body>
+<body class="bg-gray-100">
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
-
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ms-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            @if (Route::has('login'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                </li>
-                            @endif
-
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
+        <header class="bg-red-600 text-white">
+            <div class="container mx-auto p-4 flex justify-between items-center">
+                <h1 class="text-3xl font-bold">Si Gokil</h1>
+                <nav class="flex justify-between items-center">
+                    <div class="flex space-x-3">
+                        <a href="#" class="px-3 flex items-center">
+                            <i class="fas fa-store mr-1"></i> Seller Centre
+                        </a>
+                        <a href="#" class="px-3 flex items-center">
+                            <i class="fas fa-info-circle mr-1"></i> Bantuan
+                        </a>
+                    </div>
+                    <div class="flex space-x-3 relative" x-data="{ dropdownOpen: false }">
+                        @if (Route::has('login'))
+                            @auth
+                                <a href="{{ route('keranjang.home') }}" class="px-3 flex items-center">
+                                    <i class="fas fa-shopping-cart mr-1"></i> Keranjang
                                 </a>
-
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
+                                <div class="relative">
+                                    <button @click="dropdownOpen = !dropdownOpen"
+                                            class="px-3 flex items-center focus:outline-none">
+                                        <i class="fas fa-user mr-1"></i> My Account
+                                    </button>
+                                    <div x-show="dropdownOpen" @click.away="dropdownOpen = false"
+                                         class="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg z-10">
+                                        <a href="{{ url('/myaccount') }}" class="block px-4 py-2 text-gray-800">Profile</a>
+                                        <form method="POST" action="{{ route('logout') }}" class="block px-4 py-2">
+                                            @csrf
+                                            <button type="submit" class="text-gray-800 w-full text-left">Logout</button>
+                                        </form>
+                                    </div>
                                 </div>
-                            </li>
-                        @endguest
-                    </ul>
-                </div>
+                            @else
+                                <a href="{{ route('login') }}" class="px-3 flex items-center">
+                                    <i class="fas fa-sign-in-alt mr-1"></i> Log in
+                                </a>
+                                @if (Route::has('register'))
+                                    <a href="{{ route('register') }}" class="px-3 flex items-center">
+                                        <i class="fas fa-user-plus mr-1"></i> Register
+                                    </a>
+                                @endif
+                            @endauth
+                        @endif
+                    </div>
+                </nav>
             </div>
-        </nav>
+        </header>
 
         <main class="py-4">
             @yield('content')

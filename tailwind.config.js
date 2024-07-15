@@ -15,3 +15,10 @@ export default {
   },
   plugins: [],
 }
+
+// ini struktur dari css nya
+
+// kalau boostrap kan dia di public ya
+
+// tailwind liat nya distu
+// dia main component buat ngerender nya
