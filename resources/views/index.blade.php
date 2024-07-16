@@ -16,7 +16,7 @@
 
 <body class="bg-gray-100">
     <!-- Header -->
-    <header class="bg-red-600 text-white">
+    <header class="bg-red-800 text-white">
         <div class="container mx-auto p-4 flex justify-between items-center">
             <h1 class="text-3xl font-bold">Si Gokil</h1>
             <nav class="flex justify-between items-center">
@@ -76,7 +76,7 @@
                     <li>Jaminan Pasar</li>
                     <li>Jaminan Strategi Marketing</li>
                 </ul>
-                <a href="#" class="mt-4 inline-block bg-red-600 text-white px-4 py-2 rounded-lg">Gabung Sekarang</a>
+                <a href="#" class="mt-4 inline-block bg-red-800 text-white px-4 py-2 rounded-lg">Gabung Sekarang</a>
             </div>
         </div>
     </section>
@@ -84,7 +84,7 @@
     <!-- Swiper Section -->
     <section class="py-12">
         <div class="container mx-auto">
-            <div class="bg-red-600 text-white text-center p-10 rounded-lg">
+            <div class="bg-red-800 text-white text-center p-10 rounded-lg">
                 <div class="swiper-container">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide p-2">
@@ -143,17 +143,17 @@
                 <div class="w-1/3 bg-white rounded-lg p-4 shadow-lg">
                     <img src="{{ asset ('/images/plnbgg.png')}}" alt="Produk 1" class="w-full object-cover rounded-lg mb-4">
                     <h3 class="text-xl font-semibold mb-2">Produk 1</h3>
-                    <p class="text-lg font-bold text-red-600">Rp 100,000</p>
+                    <p class="text-lg font-bold text-red-800">Rp 100,000</p>
                 </div>
                 <div class="w-1/3 bg-white rounded-lg p-4 shadow-lg">
                     <img src="{{ asset ('/images/plnbgg.png')}}" alt="Produk 2" class="w-full object-cover rounded-lg mb-4">
                     <h3 class="text-xl font-semibold mb-2">Produk 2</h3>
-                    <p class="text-lg font-bold text-red-600">Rp 150,000</p>
+                    <p class="text-lg font-bold text-red-800">Rp 150,000</p>
                 </div>
                 <div class="w-1/3 bg-white rounded-lg p-4 shadow-lg">
                     <img src="{{ asset ('/images/plnbgg.png')}}" alt="Produk 3" class="w-full  object-cover rounded-lg mb-4">
                     <h3 class="text-xl font-semibold mb-2">Produk 3</h3>
-                    <p class="text-lg font-bold text-red-600">Rp 200,000</p>
+                    <p class="text-lg font-bold text-red-800">Rp 200,000</p>
                 </div>
             </div>
         </div>
@@ -168,24 +168,24 @@
                 <div class="w-1/3 bg-white rounded-lg p-4 shadow-lg">
                     <img src="{{ asset ('/images/plnbgg.png')}}" alt="Rekomendasi 1" class="w-full object-cover rounded-lg mb-4">
                     <h3 class="text-xl font-semibold mb-2">Rekomendasi 1</h3>
-                    <p class="text-lg font-bold text-red-600">Rp 120,000</p>
+                    <p class="text-lg font-bold text-red-800">Rp 120,000</p>
                 </div>
                 <div class="w-1/3 bg-white rounded-lg p-4 shadow-lg">
                     <img src="{{ asset ('/images/plnbgg.png')}}" alt="Rekomendasi 2" class="w-full  object-cover rounded-lg mb-4">
                     <h3 class="text-xl font-semibold mb-2">Rekomendasi 2</h3>
-                    <p class="text-lg font-bold text-red-600">Rp 180,000</p>
+                    <p class="text-lg font-bold text-red-800">Rp 180,000</p>
                 </div>
                 <div class="w-1/3 bg-white rounded-lg p-4 shadow-lg">
                     <img src="{{ asset ('/images/plnbgg.png')}}" alt="Rekomendasi 3" class="w-full  object-cover rounded-lg mb-4">
                     <h3 class="text-xl font-semibold mb-2">Rekomendasi 3</h3>
-                    <p class="text-lg font-bold text-red-600">Rp 220,000</p>
+                    <p class="text-lg font-bold text-red-800">Rp 220,000</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Hubungi Kami Section -->
-    <section class="py-12 bg-red-600 text-white text-center">
+    <section class="py-12 bg-red-800 text-white text-center">
         <div class="container mx-auto">
             <h2 class="text-3xl font-bold mb-4">Hubungi Kami</h2>
             <p class="text-lg">Untuk informasi lebih lanjut, hubungi kami di:</p>
