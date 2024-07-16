@@ -118,7 +118,7 @@
                         </button>
                         <div x-show="open" x-transition class="mt-2 space-y-2">
                             <a href="PenghasilanSaya" class="block py-2 px-4 bg-white rounded shadow hover:bg-gray-100">Produk Saya</a>
-                            <a href="#" class="block py-2 px-4 bg-white rounded shadow hover:bg-gray-100">Tambah Produk Baru</a>
+                            <a href="{{ route('seller.products.create') }}" class="block py-2 px-4 bg-white rounded shadow hover:bg-gray-100">Tambah Produk Baru</a>
                         </div>
                     </div>
 
@@ -137,65 +137,60 @@
                 </nav>
             </aside>
 
-            <!-- Main Content -->
-            <main class="flex-1 p-6">
-                <div class="w-3/4 bg-white p-4">
-                    <!-- Informasi Penghasilan -->
-                    <div class="bg-gray-100 p-4 mb-4">
-                        <div class="grid grid-cols-2 gap-4">
-                            <div>
-                                <h2 class="font-semibold mb-2">Informasi Penghasilan</h2>
-                                <div>Pending</div>
-                                <div>Total</div>
-                                <div>Rp. XXX</div>
-                            </div>
-                            <div>
-                                <div>Sudah Dilepas</div>
-                                <div>Minggu ini</div>
-                                <div>Rp. XXX</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Rincian Penghasilan -->
-                    <div>
-                        <h2 class="font-semibold mb-2">Rincian Penghasilan</h2>
-                        <div class="bg-gray-100 p-4 mb-4">
-                            <h3 class="font-semibold mb-2">Pending</h3>
-                            <table class="w-full table-auto">
-                                <thead>
-                                <tr>
-                                    <th class="border px-4 py-2">No</th>
-                                    <th class="border px-4 py-2">Pesanan</th>
-                                    <th class="border px-4 py-2">Perkiraan waktu pelepasan dana</th>
-                                    <th class="border px-4 py-2">Dana dilepaskan</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <!-- Isi tabel -->
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="bg-gray-100 p-4">
-                            <h3 class="font-semibold mb-2">Sudah Dilepas</h3>
-                            <table class="w-full table-auto">
-                                <thead>
-                                <tr>
-                                    <th class="border px-4 py-2">No</th>
-                                    <th class="border px-4 py-2">Pesanan</th>
-                                    <th class="border px-4 py-2">Tanggal dana dilepaskan</th>
-                                    <th class="border px-4 py-2">Total Pembayaran</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <!-- Isi tabel -->
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
+    <div class="max-w-2xl mx-auto p-6 bg-white shadow-md rounded-md">
+        <h1 class="text-2xl font-bold mb-6">Add New Product</h1>
+        <form action="{{ route('seller.products.store') }}" method="POST" enctype="multipart/form-data">
+            @csrf
+            <div class="mb-4">
+                <label for="photo" class="block text-gray-700 font-medium mb-2">Product Photo</label>
+                <input type="file" name="photo" id="photo" class="block w-full text-sm text-gray-600 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100" required>
+            </div>
+            <div class="mb-4">
+                <label for="video" class="block text-gray-700 font-medium mb-2">Product Video</label>
+                <input type="file" name="video" id="video" class="block w-full text-sm text-gray-600 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100">
+            </div>
+            <div class="mb-4">
+                <label for="name" class="block text-gray-700 font-medium mb-2">Product Name</label>
+                <input type="text" name="name" id="name" class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm" required>
+            </div>
+            <div class="mb-4">
+                <label for="category" class="block text-gray-700 font-medium mb-2">Category</label>
+                <input type="text" name="category" id="category" class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm" required>
+            </div>
+            <div class="mb-4">
+                <label for="description" class="block text-gray-700 font-medium mb-2">Description</label>
+                <textarea name="description" id="description" class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm" required></textarea>
+            </div>
+            <div class="mb-4">
+                <label for="weight" class="block text-gray-700 font-medium mb-2">Weight</label>
+                <input type="number" name="weight" id="weight" class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm" required>
+            </div>
+            <div class="mb-4">
+                <label for="price" class="block text-gray-700 font-medium mb-2">Price</label>
+                <input type="number" name="price" id="price" class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm" required>
+            </div>
+            <div class="mb-4">
+                <label for="stock" class="block text-gray-700 font-medium mb-2">Stock</label>
+                <input type="number" name="stock" id="stock" class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm" required>
+            </div>
+            <div class="mb-4">
+                <label for="condition" class="block text-gray-700 font-medium mb-2">Condition</label>
+                <select name="condition" id="condition" class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm" required>
+                    <option value="new">New</option>
+                    <option value="used">Used</option>
+                </select>
+            </div>
+            <div class="mb-4">
+                <label for="preorder" class="block text-gray-700 font-medium mb-2">Pre-order</label>
+                <div class="flex items-center">
+                    <input type="radio" name="preorder" value="1" id="preorder_yes" class="mr-2" required>
+                    <label for="preorder_yes" class="mr-4">Yes</label>
+                    <input type="radio" name="preorder" value="0" id="preorder_no" class="mr-2" required>
+                    <label for="preorder_no">No</label>
                 </div>
-            </main>
-        </div>
+            </div>
+            <button type="submit" class="w-full bg-blue-500 text-white font-bold py-2 px-4 rounded-md hover:bg-blue-600">Save</button>
+        </form>
     </div>
 </body>
 </html>

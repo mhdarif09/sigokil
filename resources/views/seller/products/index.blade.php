@@ -12,7 +12,6 @@
 </head>
 
 <body class="h-full">
-
     <div class="min-h-full">
         <nav class="bg-red-800" x-data="{ isOpen: false, accountMenu: false }">
             <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -117,85 +116,81 @@
                             </svg>
                         </button>
                         <div x-show="open" x-transition class="mt-2 space-y-2">
-                            <a href="PenghasilanSaya" class="block py-2 px-4 bg-white rounded shadow hover:bg-gray-100">Produk Saya</a>
-                            <a href="{{ route('seller.products.create') }}" class="block py-2 px-4 bg-white rounded shadow hover:bg-gray-100">Tambah Produk Baru</a>
+                            <a href="produk" class="block py-2 px-4 bg-white rounded shadow hover:bg-gray-100">Produk Saya</a>
+                            <a href="upload" class="block py-2 px-4 bg-white rounded shadow hover:bg-gray-100">Upload Produk</a>
                         </div>
                     </div>
 
                     <div x-data="{ open: false }" class="relative">
                         <button @click="open = !open" class="w-full text-left block py-2 px-4 bg-white rounded shadow hover:bg-gray-100">
-                            Toko
+                            Promosi
                             <svg :class="{'rotate-180': open, 'rotate-0': !open}" class="w-4 h-4 inline-block float-right transition-transform transform">
                                 <path d="M5 15l7-7 7 7" />
                             </svg>
                         </button>
                         <div x-show="open" x-transition class="mt-2 space-y-2">
-                            <a href="PenghasilanSaya" class="block py-2 px-4 bg-white rounded shadow hover:bg-gray-100">Profil Toko</a>
-                            <a href="#" class="block py-2 px-4 bg-white rounded shadow hover:bg-gray-100">Pengaturan Toko</a>
+                            <a href="diskon" class="block py-2 px-4 bg-white rounded shadow hover:bg-gray-100">Buat Diskon</a>
+                            <a href="#" class="block py-2 px-4 bg-white rounded shadow hover:bg-gray-100">Iklan & Promosi</a>
+                        </div>
+                    </div>
+
+                    <div x-data="{ open: false }" class="relative">
+                        <button @click="open = !open" class="w-full text-left block py-2 px-4 bg-white rounded shadow hover:bg-gray-100">
+                            Statistik Toko
+                            <svg :class="{'rotate-180': open, 'rotate-0': !open}" class="w-4 h-4 inline-block float-right transition-transform transform">
+                                <path d="M5 15l7-7 7 7" />
+                            </svg>
+                        </button>
+                        <div x-show="open" x-transition class="mt-2 space-y-2">
+                            <a href="#" class="block py-2 px-4 bg-white rounded shadow hover:bg-gray-100">Statistik Toko</a>
+                            <a href="#" class="block py-2 px-4 bg-white rounded shadow hover:bg-gray-100">Statistik Produk</a>
+                            <a href="#" class="block py-2 px-4 bg-white rounded shadow hover:bg-gray-100">Kata Pencarian</a>
                         </div>
                     </div>
                 </nav>
             </aside>
 
             <!-- Main Content -->
-            <main class="flex-1 p-6">
-                <div class="w-3/4 bg-white p-4">
-                    <!-- Informasi Penghasilan -->
-                    <div class="bg-gray-100 p-4 mb-4">
-                        <div class="grid grid-cols-2 gap-4">
-                            <div>
-                                <h2 class="font-semibold mb-2">Informasi Penghasilan</h2>
-                                <div>Pending</div>
-                                <div>Total</div>
-                                <div>Rp. XXX</div>
-                            </div>
-                            <div>
-                                <div>Sudah Dilepas</div>
-                                <div>Minggu ini</div>
-                                <div>Rp. XXX</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Rincian Penghasilan -->
-                    <div>
-                        <h2 class="font-semibold mb-2">Rincian Penghasilan</h2>
-                        <div class="bg-gray-100 p-4 mb-4">
-                            <h3 class="font-semibold mb-2">Pending</h3>
-                            <table class="w-full table-auto">
-                                <thead>
-                                <tr>
-                                    <th class="border px-4 py-2">No</th>
-                                    <th class="border px-4 py-2">Pesanan</th>
-                                    <th class="border px-4 py-2">Perkiraan waktu pelepasan dana</th>
-                                    <th class="border px-4 py-2">Dana dilepaskan</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <!-- Isi tabel -->
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="bg-gray-100 p-4">
-                            <h3 class="font-semibold mb-2">Sudah Dilepas</h3>
-                            <table class="w-full table-auto">
-                                <thead>
-                                <tr>
-                                    <th class="border px-4 py-2">No</th>
-                                    <th class="border px-4 py-2">Pesanan</th>
-                                    <th class="border px-4 py-2">Tanggal dana dilepaskan</th>
-                                    <th class="border px-4 py-2">Total Pembayaran</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <!-- Isi tabel -->
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
+            <main class="w-3/4 bg-white p-4">
+                <h2 class="text-2xl font-semibold mb-6">Penghasilan Saya</h2>
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Produk</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Kategori</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Harga</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Stock</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200">
+                        @foreach ($products as $product)
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="flex items-center">
+                                        <div class="flex-shrink-0 h-10 w-10">
+                                            <img class="h-10 w-10 rounded-full" src="{{ $product->image }}" alt="{{ $product->name }}">
+                                        </div>
+                                        <div class="ml-4">
+                                            <div class="text-sm font-medium text-gray-900">{{ $product->name }}</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="text-sm text-gray-900">{{ $product->condition }}</div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="text-sm text-gray-900">{{ $product->price }}</div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="text-sm text-gray-900">{{ $product->stock }}</div>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
             </main>
         </div>
     </div>
 </body>
+
 </html>
