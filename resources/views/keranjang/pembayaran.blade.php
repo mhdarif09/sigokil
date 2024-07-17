@@ -39,7 +39,7 @@
               <div class="ml-10 flex items-baseline space-x-4">
                 <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
                 <a href="Beranda" class="rounded-md bg-red-800 px-3 py-2 text-sm font-small text-white hover:bg-gray-700" aria-current="page">Beranda</a>
-                <a href="SellerCentre" class="rounded-md px-3 py-2 text-sm font-small text-gray-300 text-white hover:bg-gray-700 hover:text-white">Seller Centre</a>
+                <a href="seller" class="rounded-md px-3 py-2 text-sm font-small text-gray-300 text-white hover:bg-gray-700 hover:text-white">Seller Centre</a>
                
               </div>
              
@@ -47,7 +47,7 @@
           </div>
           <div class="hidden md:block">
             <div class="ml-4 flex items-center md:ml-6">
-              <a href="Keranjang">
+              <a href="cart">
               <button type="button" class="relative flex rounded-md bg-red-800 px-3 py-2 text-white text-sm hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 hover:bg-gray-700">
                 <span class="absolute -inset-1.5"></span>
                 <span class="sr-only">View notifications</span>
@@ -95,7 +95,7 @@
               </button>
              </a>
               
-              <a href="Akun">
+              <a href="akun">
               <button type="button" class="relative flex rounded-md bg-red-800 px-3 py-2 text-white text-sm hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 hover:bg-gray-700">
                 <span class="absolute -inset-1.5"></span>
                 <span class="sr-only">View notifications</span>
@@ -153,7 +153,7 @@
         <div class="space-y-1 px-2 pb-3 pt-2 sm:px-3">
           <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
           <a href="#" class="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white" aria-current="page">Branda</a>
-          <a href="#" class="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white" aria-current="page">Seller Centre</a>
+          <a href="seller" class="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white" aria-current="page">Seller Centre</a>
         </div>
     </nav>
   

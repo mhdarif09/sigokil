@@ -44,7 +44,7 @@
                         <div class="flex items-center">
                         </div>
 
-                        <a href="Akun">
+                        <a href="akun">
                         <button type="button"
                             class="relative flex rounded-md bg-red-800 px-3 py-2 text-white text-sm hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 hover:bg-gray-700">
                             <span class="absolute -inset-1.5"></span>
@@ -70,7 +70,7 @@
                                 x-transition:leave-end="opacity-0 scale-95"
                                 class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
                                 role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
-                                <a href="keranjang" class="block px-4 py-2 text-sm text-gray-700" role="menuitem"
+                                <a href="cart" class="block px-4 py-2 text-sm text-gray-700" role="menuitem"
                                     tabindex="-1" id="user-menu-item-0">keranjang</a>
                                 <a href="pemberitahuan" class="block px-4 py-2 text-sm text-gray-700" role="menuitem"
                                     tabindex="-1" id="user-menu-item-1">pemberitahuan</a>
@@ -86,8 +86,8 @@
             <div x-show="isOpen" class="md:hidden" id="mobile-menu">
                 <div class="space-y-1 px-2 pb-3 pt-2 sm:px-3">
                     <a href="#" class="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white"
-                        aria-current="page">Branda</a>
-                    <a href="#" class="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white"
+                        aria-current="page">Beranda</a>
+                    <a href="seller" class="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white"
                         aria-current="page">Seller Centre</a>
                 </div>
             </div>
@@ -129,7 +129,7 @@
                         </button>
                         <div x-show="open" x-transition class="mt-2 space-y-2">
                             <a href="PenghasilanSaya" class="block py-2 px-4 bg-white rounded shadow hover:bg-gray-100">Penghasilan Saya</a>
-                            <a href="#" class="block py-2 px-4 bg-white rounded shadow hover:bg-gray-100">Saldo Saya</a>
+                            <a href="saldo" class="block py-2 px-4 bg-white rounded shadow hover:bg-gray-100">Saldo Saya</a>
                             <a href="#" class="block py-2 px-4 bg-white rounded shadow hover:bg-gray-100">Rekening Bank</a>
                         </div>
 
