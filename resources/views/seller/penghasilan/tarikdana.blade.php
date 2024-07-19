@@ -8,7 +8,7 @@
     @vite('resources/css/app.css')
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <title>Saldo saya</title>
+    <title>Tarik Dana</title>
     <style>
         .saldo-section, .transaksi-section {
             background-color: #fff;
@@ -128,7 +128,12 @@
                 <svg class="ml-6 text-lg text-slate-300 light:text-slate-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m10 16 4-4-4-4"/>
                 </svg>
-                <h2 class="ml-10  text-lg font-normal text-black">Saldo Saya</h2>
+                <h2 class="ml-10 text-lg font-normal text-gray-300">Saldo Saya</h2>
+                <svg class="ml-6 text-lg text-slate-300 light:text-slate-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m10 16 4-4-4-4"/>
+                </svg>
+                <h2 class="ml-10  text-lg font-normal text-black font-bold">Tarik Dana</h2>
+
             </div>
         </header>
 
@@ -165,6 +170,7 @@
                                 <a href="#" class="block py-2 px-4 bg-white rounded shadow hover:bg-gray-100">Rekening Bank</a>
                             </div>
                         </div>
+
                         <div x-data="{ open: false }" class="relative">
                             <button @click="open = !open" class="w-full text-left block py-2 px-4 bg-white rounded shadow hover:bg-gray-100">
                                 Produk
@@ -193,55 +199,42 @@
                     </ul>
                 </aside>
 
-                <!-- Main Section -->
-                <div class="w-3/4 mx-auto p-4">
-                    <div class="saldo-section">
-                        <div class="header">
-                            <div class="info-saldo flex flex-col items-start">
-                                <p class="info-tambahan mb-4 font-bold">Saldo</p>
-                                <p class="jumlah-saldo mb-4">Rp. XXX</p>
-                                <a href="tarikdana">
-                                <button class="tarik-dana-button bg-blue-500 text-white font-bold py-2 px-4 rounded">Tarik Dana</button>
-                                </a>
-                            </div>
-                            <div class="detail-bank">
-                                <div class="flex items-center">
-                                    <img src="https://via.placeholder.com/50" alt="Logo Bank" class="mr-4">
-                                    <div>
-                                        <h3 class="Rekening">Rekening</h3>
-                                        <p class="Nama_Bank">Nama Bank</p>
-                                        <p class="nomor-rekening">Nomor Rekening</p>
-                                    </div>
-                                </div>
-                                <button class="ml-4 p-2 bg-blue-500 text-white rounded">Tambah Rekening Bank</button>
-                            </div>
+                <main class="bg-gray-200 p-6 w-full">
+                    <!-- Tarik Dana Ke Section -->
+                    <div class="bg-white rounded-lg shadow-md p-4 mb-4">
+                        <h2 class="text-lg font-semibold mb-2">Tarik Dana Ke</h2>
+                        <div class="mb-2">
+                            <label class="block text-gray-700">Rekening Bank</label>
+                            <input type="text" class="border border-gray-300 rounded p-2 w-full">
+                        </div>
+                        <div class="mb-2">
+                            <label class="block text-gray-700">Nama Bank</label>
+                            <input type="text" class="border border-gray-300 rounded p-2 w-full">
+                        </div>
+                        <div class="mb-2">
+                            <label class="block text-gray-700">Nomor Rekening Bank</label>
+                            <input type="text" class="border border-gray-300 rounded p-2 w-full">
                         </div>
                     </div>
-
-                    <div class="transaksi-section">
-                        <div class="header">
-                            <h2>Transaksi</h2>
-                            <select>
-                                <option>Rentang Tanggal</option>
-                            </select>
+                
+                    <!-- Jumlah Penarikan Section -->
+                    <div class="bg-white rounded-lg shadow-md p-4 mb-4">
+                        <h2 class="text-lg font-semibold mb-2">Jumlah Penarikan</h2>
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-red-500 text-xl font-semibold">Rp. XXX</span>
+                            <button class="text-gray-500"><!-- Ikon X (cross) --></button>
                         </div>
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>No</th>
-                                    <th>Tanggal Penarikan Dana</th>
-                                    <th>Jumlah Dana</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <!-- Add transaction rows here -->
-                            </tbody>
-                        </table>
+                        <div class="text-gray-700">
+                            <span>Tarik saldo saat ini : Rp. XXX</span>
+                        </div>
                     </div>
-                </div>
-            </div>
-        </main>
-    </div>
-</body>
+                
+                    <!-- Footer Section -->
+                    <div class="flex justify-between items-center bg-white rounded-lg shadow-md p-4">
+                        <span class="text-red-500 font-semibold">Dana yang dilepas Rp. XXX</span>
+                        <button class="bg-orange-500 text-white rounded p-2">Berikutnya</button>
+                    </div>
+                </main>
+                      
 
-</html>
+               

@@ -33,7 +33,6 @@ Route::get('/pembayaran', function () {
 Route::get('/keranjang', [KeranjangController::class, 'index'])->name('keranjang.home');
 
 
-
 Route::get('/Pesanan_saya', function () {
     return view('Pesanan_saya');
 });
@@ -43,11 +42,15 @@ Route::get('/pembayaranberhasil', function (){
 });
 
 Route::get('/penghasilan', function (){
-    return view('seller.penghasilansaya');
+    return view('seller.penghasilan.penghasilansaya');
 });
 
 Route::get('/saldo', function (){
-    return view('seller.saldosaya');
+    return view('seller.penghasilan.saldosaya');
+});
+
+Route::get('/tarikdana', function (){
+    return view('seller.penghasilan.tarikdana');
 });
 
 Route::get('/akun', function (){
