@@ -5,10 +5,11 @@ use App\Http\Controllers\KeranjangController;
 use App\Http\Controllers\SellerController;
 use App\Http\Controllers\SellerProductController;
 use App\Http\Middleware\CheckRole;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\IndexController;
+use App\Http\Controllers\CartController;
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/', [IndexController::class, 'index'])->name('home');
 
 
 Route::middleware(['auth', CheckRole::class.':seller'])->group(function () {
@@ -57,5 +58,14 @@ Route::get('/akun', function (){
     return view('akun.index');
 });
 Auth::routes();
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/product/{id}', [HomeController::class, 'show'])->name('product.show');
+Route::post('/product/{id}/order', [HomeController::class, 'order'])->name('product.order');
 
+// cart
+
+// Cart Routes
+Route::post('/cart/add/{id}', [CartController::class, 'add'])->name('cart.add');
+Route::get('/cart', [CartController::class, 'show'])->name('cart');
+Route::get('/checkout', [CartController::class, 'checkout'])->name('checkout');
+Route::post('/checkout', [CartController::class, 'processCheckout'])->name('checkout.process');

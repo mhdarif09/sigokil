@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    @vite('resources/css/app.css')
+    <link rel="stylesheet" href="{{ mix('css/app.css') }}">
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <title>Keranjang</title>
@@ -19,10 +19,10 @@
                     <div class="flex items-center">
                         <div class="hidden md:block">
                             <div class="ml-10 flex items-baseline space-x-4">
-                                <a href="Beranda"
+                                <a href="{{ route('home') }}"
                                     class="rounded-md bg-red-800 px-3 py-2 text-sm font-small text-white hover:bg-gray-700"
                                     aria-current="page">Beranda</a>
-                                <a href="seller"
+                                <a href="{{ route('seller') }}"
                                     class="rounded-md px-3 py-2 text-sm font-small text-gray-300 text-white hover:bg-gray-700 hover:text-white">Seller
                                     Centre</a>
                             </div>
@@ -30,7 +30,7 @@
                     </div>
                     <div class="hidden md:block">
                         <div class="ml-4 flex items-center md:ml-6">
-                            <a href="cart">
+                            <a href="{{ route('cart.show') }}">
                                 <button type="button"
                                     class="relative flex rounded-md bg-red-800 px-3 py-2 text-white text-sm hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 hover:bg-gray-700">
                                     <span class="absolute -inset-1.5"></span>
@@ -46,7 +46,7 @@
                                 </button>
                             </a>
 
-                            <a href="Pesanan_saya">
+                            <a href="{{ route('orders') }}">
                                 <button type="button"
                                     class="relative flex rounded-md bg-red-800 px-3 py-2 text-white text-sm hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 hover:bg-gray-700">
                                     <span class="absolute -inset-1.5"></span>
@@ -62,7 +62,7 @@
                                 </button>
                             </a>
 
-                            <a href="Bantuan">
+                            <a href="{{ route('help') }}">
                                 <button type="button"
                                     class="relative flex rounded-md bg-red-800 px-3 py-2 text-white text-sm hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 hover:bg-gray-700">
                                     <span class="absolute -inset-1.5"></span>
@@ -101,9 +101,9 @@
                                     class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
                                     role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button"
                                     tabindex="-1">
-                                    <a href="akun" class="block px-4 py-2 text-sm text-gray-700" role="menuitem"
+                                    <a href="{{ route('account') }}" class="block px-4 py-2 text-sm text-gray-700" role="menuitem"
                                         tabindex="-1" id="user-menu-item-0">Akun Saya</a>
-                                    <a href="logout" class="block px-4 py-2 text-sm text-gray-700" role="menuitem"
+                                    <a href="{{ route('logout') }}" class="block px-4 py-2 text-sm text-gray-700" role="menuitem"
                                         tabindex="-1" id="user-menu-item-1">Log out</a>
                                 </div>
                             </div>
@@ -115,121 +115,152 @@
                             class="inline-flex items-center justify-center rounded-md bg-gray-900 p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
                             aria-controls="mobile-menu" aria-expanded="false" @click="isOpen = !isOpen">
                             <span class="sr-only">Buka menu utama</span>
-                            <!-- Ikon saat menu tertutup. -->
-                            <!--
-                                Heroicon name: outline/bars-3
-
-                                Menu terbuka: "hidden", Menu tertutup: "block"
-                            -->
-                            <svg class="block h-6 w-6" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-                                stroke="currentColor" aria-hidden="true">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M4 6h16M4 12h16m-7 6h7" />
+                            <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 5.25h16.5m-16.5 7.5h16.5m-16.5 7.5h16.5" />
+                            </svg>
+                            <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M6 18L18 6M6 6l12 12" />
                             </svg>
                         </button>
                     </div>
                 </div>
             </div>
 
-            <!-- Menu mobile, tampilkan/sembunyikan berdasarkan status menu. -->
-            <div x-show="isOpen" class="md:hidden" id="mobile-menu">
-                <div class="space-y-1 px-2 pb-3 pt-2 sm:px-3">
-                    <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-                    <a href="Beranda" class="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white"
-                        aria-current="page">Beranda</a>
-                    <a href="seller"
+            <!-- Menu mobile, tampilkan atau sembunyikan berdasarkan status menu mobile. -->
+            <div class="md:hidden" id="mobile-menu" x-show="isOpen" @click.outside="isOpen = false">
+                <div class="space-y-1 px-2 pt-2 pb-3 sm:px-3">
+                    <a href="{{ route('home') }}"
                         class="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white"
-                        aria-current="page">Seller Centre</a>
+                        aria-current="page">Beranda</a>
+                    <a href="{{ route('seller') }}"
+                        class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 text-white hover:bg-gray-700 hover:text-white">Seller
+                        Centre</a>
+                </div>
+                <div class="border-t border-gray-700 pt-4 pb-3">
+                    <div class="space-y-1 px-2">
+                        <a href="{{ route('cart.show') }}"
+                            class="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white">Keranjang</a>
+                        <a href="{{ route('orders') }}"
+                            class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white">Pesanan
+                            Saya</a>
+                        <a href="{{ route('help') }}"
+                            class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white">Bantuan</a>
+                        <a href="{{ route('account') }}"
+                            class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white">Akun
+                            Saya</a>
+                        <a href="{{ route('logout') }}"
+                            class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white">Log
+                            out</a>
+                    </div>
                 </div>
             </div>
         </nav>
 
         <header class="bg-white shadow">
-            <div class="mx-auto flex max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-                <img class="border-r pr-4 w-20" src="{{ asset("/images/plnbgg.png") }}">
-                <h1 class="text-3xl my-auto ml-6 font-bold tracking-tight text-yellow-300">Keranjang Belanja</h1>
+            <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+                <h1 class="text-3xl font-bold tracking-tight text-gray-900">Keranjang</h1>
             </div>
         </header>
-
         <main>
-            <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-                <!-- Konten Anda -->
-                <div class="grid grid-cols-1 gap-4">
-                    <div class="overflow-x-auto">
-                        <table class="table-auto w-full mb-4">
-                            <thead>
-                                <tr class="bg-white-200">
-                                    <th class="p-2 "><input type="checkbox" class="form-checkbox h-5 w-5 text-white-600">
-                                    </th>
-                                    <th class="p-2 ">Produk</th>
-                                    <th class="p-2 "></th>
-                                    <th class="p-2 ">Variasi</th>
-                                    <th class="p-2 ">Harga Satuan</th>
-                                    <th class="p-2 ">Kuantitas</th>
-                                    <th class="p-2 ">Total Harga</th>
-                                    <th class="p-2 ">Aksi</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr class=" bg-white-100">
-                                    <td class="text-center p-2 "><input type="checkbox"
-                                            class="form-checkbox h-5 w-5 text-white-600"></td>
-                                    <td colspan="2" class="p-2 ">Nama Toko</td>
-                                    <td colspan="4" class="p-2 "></td>
-                                </tr>
-                                <tr class="">
-                                    <td class="text-center p-2 "><input type="checkbox"
-                                            class="form-checkbox h-5 w-5 text-white-600"></td>
-                                    <td class="p-2 ">Nama Produk</td>
-                                    <td class="p-2 ">Foto Produk</td>
-                                    <td class="p-2 ">Warna/Rasa</td>
-                                    <td class="p-2 ">Rp xxx</td>
-                                    <td class="p-2 ">x</td>
-                                    <td class="p-2 ">Rp xxx</td>
-                                    <td class="p-2  text-dark-500 cursor-pointer">Hapus</td>
-                                </tr>
-                                <tr class="">
-                                    <td class=" text-center p-2 "><input type="checkbox"
-                                            class="form-checkbox h-5 w-5 text-white-600"></td>
-                                    <td colspan="2" class="p-2 ">Nama Toko</td>
-                                    <td colspan="4" class="p-2 "></td>
-                                </tr>
-                                <tr class="">
-                                    <td class="text-center p-2 "><input type="checkbox"
-                                            class="form-checkbox h-5 w-5 text-white-600"></td>
-                                    <td class="p-2 ">Nama Produk</td>
-                                    <td class="p-2 ">Foto Produk</td>
-                                    <td class="p-2 ">Warna/Rasa</td>
-                                    <td class="p-2 ">Rp xxx</td>
-                                    <td class="p-2 ">x</td>
-                                    <td class="p-2 ">Rp xxx</td>
-                                    <td class="p-2  text-dark-500 cursor-pointer">Hapus</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-
-                    <div class="flex justify-between items-center  p-2">
-                        <div class="flex items-center space-x-4">
-                            <input type="checkbox" class="form-checkbox h-5 w-5 text-white-600">
-                            <span class="font-semibold">Pilih semua</span>
+            <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
+                <div class="px-4 py-6 sm:px-0">
+                    <div class="rounded-lg border-4 border-dashed border-gray-200 p-8 bg-white">
+                        <div class="container mx-auto">
+                            <div class="flex flex-col">
+                                <div class="overflow-x-auto">
+                                    <div class="inline-block min-w-full py-2 align-middle">
+                                        <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+                                            <table class="min-w-full divide-y divide-gray-200">
+                                                <thead class="bg-gray-50">
+                                                    <tr>
+                                                        <th scope="col"
+                                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                            Produk
+                                                        </th>
+                                                        <th scope="col"
+                                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                            Harga
+                                                        </th>
+                                                        <th scope="col"
+                                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                            Kuantitas
+                                                        </th>
+                                                        <th scope="col"
+                                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                            Total
+                                                        </th>
+                                                        <th scope="col"
+                                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                            Aksi
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody class="bg-white divide-y divide-gray-200">
+                                                    @foreach ($cartItems as $item)
+                                                        <tr>
+                                                            <td class="px-6 py-4 whitespace-nowrap">
+                                                                <div class="flex items-center">
+                                                                    <div class="ml-4">
+                                                                        <div class="text-sm font-medium text-gray-900">
+                                                                            {{ $item->product->name }}
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                            <td class="px-6 py-4 whitespace-nowrap">
+                                                                <div class="text-sm text-gray-900">
+                                                                    Rp {{ number_format($item->product->price, 0, ',', '.') }}
+                                                                </div>
+                                                            </td>
+                                                            <td class="px-6 py-4 whitespace-nowrap">
+                                                                <form action="{{ route('cart.update', $item->id) }}" method="POST">
+                                                                    @csrf
+                                                                    @method('PATCH')
+                                                                    <input type="number" name="quantity"
+                                                                        value="{{ $item->quantity }}"
+                                                                        class="w-16 px-2 py-1 border rounded-md focus:outline-none focus:border-blue-500">
+                                                                    <button type="submit"
+                                                                        class="ml-2 px-3 py-1 bg-blue-500 text-white rounded-md">Update</button>
+                                                                </form>
+                                                            </td>
+                                                            <td class="px-6 py-4 whitespace-nowrap">
+                                                                Rp {{ number_format($item->product->price * $item->quantity, 0, ',', '.') }}
+                                                            </td>
+                                                            <td class="px-6 py-4 whitespace-nowrap">
+                                                                <form action="{{ route('cart.destroy', $item->id) }}" method="POST">
+                                                                    @csrf
+                                                                    @method('DELETE')
+                                                                    <button type="submit"
+                                                                        class="px-3 py-1 bg-red-500 text-white rounded-md">Hapus</button>
+                                                                </form>
+                                                            </td>
+                                                        </tr>
+                                                    @endforeach
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mt-8 flex justify-between">
+                                    <a href="{{ route('checkout') }}"
+                                        class="bg-green-500 text-white px-4 py-2 rounded-md">Lanjut ke Pembayaran</a>
+                                    <div class="text-lg font-bold">
+                                        Total: Rp {{ number_format($totalPrice, 0, ',', '.') }}
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="flex items-center">
-                            <span class="font-semibold">Total:</span>
-                            <span class="text-lg font-bold">Rp XXXX</span>
-                        </div>
-                        <a href="checkout"
-                        <button
-                            class="bg-red-700 rounded-full px-6 py-2 text-white text-center">
-                            <span>Beli Sekarang</span> 
-                        </button>
-                    </a>
                     </div>
                 </div>
             </div>
         </main>
-
     </div>
+    <script src="{{ mix('js/app.js') }}"></script>
 </body>
 
 </html>

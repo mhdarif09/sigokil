@@ -4,18 +4,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 
-class HomeController extends Controller
+class IndexController extends Controller
 {
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     /**
      * Show the application dashboard with all products.
      *
@@ -24,7 +19,7 @@ class HomeController extends Controller
     public function index()
     {
         $products = Product::all();
-        return view('home', compact('products'));
+        return view('index', compact('products'));
     }
 
     /**

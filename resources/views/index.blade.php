@@ -61,7 +61,6 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
     <section class="bg-pattern bg-cover text-center py-20">
         <div class="container mx-auto">
             <h2 class="text-5xl font-bold text-gray-800">Si Gokil Palembang</h2>
@@ -119,15 +118,15 @@
             <h2 class="text-3xl font-bold mb-8">Kategori</h2>
             <div class="flex justify-center space-x-8">
                 <div class="w-1/3">
-                    <img src="{{ asset ('/images/plnbgg.png')}}" alt="Kuliner" class="w-full  object-cover rounded-lg mb-4">
+                    <img src="{{ asset('/images/plnbgg.png') }}" alt="Kuliner" class="w-full object-cover rounded-lg mb-4">
                     <h3 class="text-xl font-semibold">Kuliner</h3>
                 </div>
                 <div class="w-1/3">
-                    <img src="{{ asset ('/images/plnbgg.png')}}" alt="Jasa" class="w-full  object-cover rounded-lg mb-4">
+                    <img src="{{ asset('/images/plnbgg.png') }}" alt="Jasa" class="w-full object-cover rounded-lg mb-4">
                     <h3 class="text-xl font-semibold">Jasa</h3>
                 </div>
                 <div class="w-1/3">
-                    <img src="{{ asset ('/images/plnbgg.png')}}" alt="Fashion" class="w-full  object-cover rounded-lg mb-4">
+                    <img src="{{ asset('/images/plnbgg.png') }}" alt="Fashion" class="w-full object-cover rounded-lg mb-4">
                     <h3 class="text-xl font-semibold">Fashion</h3>
                 </div>
             </div>
@@ -139,81 +138,40 @@
         <div class="container mx-auto text-center">
             <h2 class="text-3xl font-bold mb-8">Produk Terlaris</h2>
             <div class="flex justify-center space-x-8">
-                <!-- Example Product -->
-                <div class="w-1/3 bg-white rounded-lg p-4 shadow-lg">
-                    <img src="{{ asset ('/images/plnbgg.png')}}" alt="Produk 1" class="w-full object-cover rounded-lg mb-4">
-                    <h3 class="text-xl font-semibold mb-2">Produk 1</h3>
-                    <p class="text-lg font-bold text-red-800">Rp 100,000</p>
-                </div>
-                <div class="w-1/3 bg-white rounded-lg p-4 shadow-lg">
-                    <img src="{{ asset ('/images/plnbgg.png')}}" alt="Produk 2" class="w-full object-cover rounded-lg mb-4">
-                    <h3 class="text-xl font-semibold mb-2">Produk 2</h3>
-                    <p class="text-lg font-bold text-red-800">Rp 150,000</p>
-                </div>
-                <div class="w-1/3 bg-white rounded-lg p-4 shadow-lg">
-                    <img src="{{ asset ('/images/plnbgg.png')}}" alt="Produk 3" class="w-full  object-cover rounded-lg mb-4">
-                    <h3 class="text-xl font-semibold mb-2">Produk 3</h3>
-                    <p class="text-lg font-bold text-red-800">Rp 200,000</p>
-                </div>
+                @foreach($products as $product)
+                    <div class="w-1/3 bg-white rounded-lg p-4 shadow-lg">
+                        <a href="{{ route('product.show', $product->id) }}">
+                            <img src="{{ asset('storage/' . $product->photo) }}" alt="{{ $product->name }}" class="w-full object-cover rounded-lg mb-4">
+                            <h3 class="text-xl font-semibold mb-2">{{ $product->name }}</h3>
+                            <p class="text-lg font-bold text-red-800">Rp {{ number_format($product->price, 0, ',', '.') }}</p>
+                        </a>
+                    </div>
+                @endforeach
             </div>
-        </div>
-    </section>
-
-    <!-- Rekomendasi Section -->
-    <section class="py-12">
-        <div class="container mx-auto text-center">
-            <h2 class="text-3xl font-bold mb-8">Rekomendasi</h2>
-            <div class="flex justify-center space-x-8">
-                <!-- Example Recommendation -->
-                <div class="w-1/3 bg-white rounded-lg p-4 shadow-lg">
-                    <img src="{{ asset ('/images/plnbgg.png')}}" alt="Rekomendasi 1" class="w-full object-cover rounded-lg mb-4">
-                    <h3 class="text-xl font-semibold mb-2">Rekomendasi 1</h3>
-                    <p class="text-lg font-bold text-red-800">Rp 120,000</p>
-                </div>
-                <div class="w-1/3 bg-white rounded-lg p-4 shadow-lg">
-                    <img src="{{ asset ('/images/plnbgg.png')}}" alt="Rekomendasi 2" class="w-full  object-cover rounded-lg mb-4">
-                    <h3 class="text-xl font-semibold mb-2">Rekomendasi 2</h3>
-                    <p class="text-lg font-bold text-red-800">Rp 180,000</p>
-                </div>
-                <div class="w-1/3 bg-white rounded-lg p-4 shadow-lg">
-                    <img src="{{ asset ('/images/plnbgg.png')}}" alt="Rekomendasi 3" class="w-full  object-cover rounded-lg mb-4">
-                    <h3 class="text-xl font-semibold mb-2">Rekomendasi 3</h3>
-                    <p class="text-lg font-bold text-red-800">Rp 220,000</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Hubungi Kami Section -->
-    <section class="py-12 bg-red-800 text-white text-center">
-        <div class="container mx-auto">
-            <h2 class="text-3xl font-bold mb-4">Hubungi Kami</h2>
-            <p class="text-lg">Untuk informasi lebih lanjut, hubungi kami di:</p>
-            <p class="text-lg font-semibold mt-2">Email: info@sigokilpalembang.com</p>
-            <p class="text-lg font-semibold">Telepon: 0812-3456-7890</p>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-6">
-        <div class="container mx-auto text-center">
-            <p class="text-sm">&copy; 2023 Si Gokil Palembang. All rights reserved.</p>
+    <footer class="bg-gray-900 text-white">
+        <div class="container mx-auto p-4">
+            <div class="flex justify-between items-center">
+                <p>&copy; 2023 Sigokil Palembang. All rights reserved.</p>
+                <ul class="flex space-x-4">
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
         </div>
     </footer>
 
+    <!-- Add Swiper JS -->
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+    <!-- Initialize Swiper -->
     <script>
         var swiper = new Swiper('.swiper-container', {
-            slidesPerView: 1,
-            spaceBetween: 10,
-            loop: true,
             pagination: {
                 el: '.swiper-pagination',
-                clickable: true,
-            },
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
             },
         });
     </script>
