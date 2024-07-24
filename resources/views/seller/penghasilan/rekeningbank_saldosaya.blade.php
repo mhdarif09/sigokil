@@ -8,7 +8,7 @@
     @vite('resources/css/app.css')
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <title>Tarik Dana</title>
+    <title>Saldo saya</title>
     <style>
         .saldo-section, .transaksi-section {
             background-color: #fff;
@@ -62,10 +62,54 @@
             padding: 10px;
             border: 1px solid #ddd;
         }
+        .sidebar {
+            width: 200px;
+            background-color: #f8f8f8;
+            padding: 20px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            height: 100vh;
+        }
+        .sidebar button {
+            width: 100%;
+            padding: 10px 20px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            background-color: #fff;
+            cursor: pointer;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: left;
+        }
+        .sidebar button:hover {
+            background-color: #eee;
+        }
+        .sidebar button span {
+            margin-left: 10px;
+        }
+        .content {
+            flex-grow: 1;
+            padding: 20px;
+        }
+        .rekening-bank {
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+        .rekening-bank h2 {
+            margin-top: 0;
+        }
+        .tambah-rekening {
+            border: 2px dashed #ccc;
+            padding: 40px;
+            text-align: center;
+            cursor: pointer;
+            color: #888;
+        }
     </style>
 </head>
 
-<div class="min-h-full">
+<body class="min-h-full">
     <nav class="bg-red-800" x-data="{ isOpen: false, accountMenu: false }">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div class="flex h-16 items-center justify-between">
@@ -128,12 +172,11 @@
                 <svg class="ml-6 text-lg text-slate-300 light:text-slate-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m10 16 4-4-4-4"/>
                 </svg>
-                <h2 class="ml-10 text-lg font-normal text-gray-300">Saldo Saya</h2>
+                <h2 class="ml-10  text-lg font-normal text-black">Saldo Saya</h2>
                 <svg class="ml-6 text-lg text-slate-300 light:text-slate-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m10 16 4-4-4-4"/>
                 </svg>
-                <h2 class="ml-10  text-lg font-normal text-black font-bold">Tarik Dana</h2>
-
+                <h2 class="ml-10 text-lg font-normal text-back">Tambah Rekening Bank</h2>
             </div>
         </header>
 
@@ -170,7 +213,6 @@
                                 <a href="#" class="block py-2 px-4 bg-white rounded shadow hover:bg-gray-100">Rekening Bank</a>
                             </div>
                         </div>
-
                         <div x-data="{ open: false }" class="relative">
                             <button @click="open = !open" class="w-full text-left block py-2 px-4 bg-white rounded shadow hover:bg-gray-100">
                                 Produk
@@ -193,43 +235,43 @@
                             </button>
                             <div x-show="open" x-transition class="mt-2 space-y-2">                              
                                 <a href="akun" class="block py-2 px-4 bg-white rounded shadow hover:bg-gray-100">Profil Toko </a>
-                                <a href="setting" class="block py-2 px-4 bg-white rounded shadow hover:bg-gray-100">Pengaturan Toko</a>
+                                <a href="#" class="block py-2 px-4 bg-white rounded shadow hover:bg-gray-100">Pengaturan Toko</a>
                             </div>
                         </div>
                     </ul>
                 </aside>
 
-                <main class="bg-gray-200 p-6 w-full">
-                    <!-- Tarik Dana Ke Section -->
-                    <div class="bg-white rounded-lg shadow-md p-4 mb-4">
-                        <h2 class="text-lg font-semibold mb-2">Tarik Dana Ke</h2>
-                        <div class="mb-2">
-                            <label class="pb-8 block text-gray-700">Rekening Bank</label>     
-                        </div>
-                        <div class="mb-2">
-                            <label class="pb-10 block text-gray-700">Nama Bank</label>                       
-                        <div class="mb-2">
-                            <label class="pb-10 block text-gray-700">Nomor Rekening Bank</label>                          
+               <!-- Main Section -->
+            <div class="w-3/4 mx-auto p-4">
+                <!-- Rekening Bank Section -->
+                <section class="rekening-bank" x-data="{ showModal: false }">
+                    <h2 class="text-2xl font-bold mb-4">Tambah Rekening Bank</h2>
+                    <div class="tambah-rekening bg-white-500 text-white p-4 rounded cursor-pointer" @click="showModal = true">
+                        <p class="text-center">+ Tambah Rekening Bank Baru</p>
                     </div>
-                
-                    <!-- Jumlah Penarikan Section -->
-                    <div class="bg-white rounded-lg shadow-md p-4 mb-4">
-                        <h2 class="text-lg font-semibold mb-2">Jumlah Penarikan</h2>
-                        <div class="flex justify-between items-center mb-2">
-                            <span class="text-red-500 text-xl font-semibold">Rp. XXX</span>
-                            <button class="text-gray-500"><!-- Ikon X (cross) --></button>
-                        </div>
-                        <div class="text-gray-700">
-                            <span>Tarik saldo saat ini : Rp. XXX</span>
-                        </div>
-                    </div>
-                
-                    <!-- Footer Section -->
-                    <div class="flex justify-between items-center bg-white rounded-lg shadow-md p-4">
-                        <span class="text-red-500 font-semibold">Dana yang dilepas Rp. XXX</span>
-                        <button class="bg-orange-500 text-white rounded p-2">Berikutnya</button>
-                    </div>
-                </main>
-                      
 
-               
+                    <!-- Modal -->
+                    <div x-show="showModal" class="fixed inset-0 flex items-center justify-center z-50" style="display: none;">
+                        <div class="bg-black opacity-50 absolute inset-0" @click="showModal = false"></div>
+                        <div class="bg-white p-6 rounded shadow-lg relative z-10">
+                            <h2 class="text-xl font-bold mb-4">Rekening Bank</h2>
+                            <div class="mb-4">
+                                <label for="bank" class="block text-sm font-medium text-gray-700">Bank</label>
+                                <input type="text" id="bank" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                            </div>
+                            <div class="mb-4">
+                                <label for="nomor_rekening" class="block text-sm font-medium text-gray-700">Nomor Rekening</label>
+                                <input type="text" id="nomor_rekening" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                            </div>
+                            <div class="flex justify-end">
+                                <button @click="showModal = false" class="bg-gray-300 text-gray-800 px-4 py-2 rounded mr-2">Tutup</button>
+                                <button @click="showModal = false" class="bg-yellow-500 text-white px-4 py-2 rounded">Konfirmasi</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

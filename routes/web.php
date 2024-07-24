@@ -56,6 +56,10 @@ Route::get('/tarikdana', function (){
 Route::get('/akun', function (){
     return view('akun.index');
 });
+
+Route::get('/rekeningbaru', function (){
+    return view('seller.penghasilan.rekeningbank_saldosaya');
+});
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

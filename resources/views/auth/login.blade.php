@@ -18,7 +18,7 @@
 </head>
 <body class="bg-gray-100">
     <div id="app">
-        <header class="bg-red-600 text-white">
+        <header class="bg-red-800 text-white">
             <div class="container mx-auto p-4 flex justify-between items-center">
                 <h1 class="text-3xl font-bold">Si Gokil</h1>
                 <nav class="flex justify-between items-center">
@@ -46,31 +46,31 @@
                     @csrf
                     <div>
                         <label for="email" class="block text-sm font-medium text-gray-700">Email Address</label>
-                        <input id="email" type="email" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                        <input id="email" type="email" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-red-800 focus:border-red-800 sm:text-sm @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
                         @error('email')
-                        <span class="text-red-500 text-sm mt-1" role="alert">
+                        <span class="text-red-800 text-sm mt-1" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
                         @enderror
                     </div>
                     <div>
                         <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
-                        <input id="password" type="password" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+                        <input id="password" type="password" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-red-800 focus:border-red-800 sm:text-sm @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
                         @error('password')
-                        <span class="text-red-500 text-sm mt-1" role="alert">
+                        <span class="text-red-800 text-sm mt-1" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
                         @enderror
                     </div>
                     <div class="flex items-center justify-between">
                         <div class="flex items-center">
-                            <input id="remember_me" name="remember" type="checkbox" class="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300 rounded">
+                            <input id="remember_me" name="remember" type="checkbox" class="h-4 w-4 text-red-800 focus:ring-red-800 border-gray-300 rounded">
                             <label for="remember_me" class="ml-2 block text-sm text-gray-900">
                                 Remember me
                             </label>
                         </div>
                         @if (Route::has('password.request'))
-                        <a class="text-sm font-medium text-red-600 hover:text-red-500" href="{{ route('password.request') }}">
+                        <a class="text-sm font-medium text-red-800 hover:text-red-800" href="{{ route('password.request') }}">
                             Forgot your password?
                         </a>
                         @endif
@@ -82,7 +82,7 @@
                     </div>
                     <div class="mt-6 text-center">
                         @if (Route::has('register'))
-                        <a class="text-sm font-medium text-red-600 hover:text-red-500" href="{{ route('register') }}">
+                        <a class="text-sm font-medium text-red-800 hover:text-red-800" href="{{ route('register') }}">
                             Belum punya akun? DAFTAR
                         </a>
                         @endif

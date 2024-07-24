@@ -8,7 +8,7 @@
     @vite('resources/css/app.css')
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <title>Penghasilan Saya</title>
+    <title>Produk saya</title>
 </head>
 
 <body class="h-full">
@@ -18,7 +18,7 @@
                 <div class="flex h-16 items-center justify-between">
                     <div class="flex items-center">
                         <div class="hidden md:block">
-                            <div class="ml-10 flex items-baseline space-x-4">
+                            <div class="ml-10 flex items-baseline space-x-10">
                                 <a href="Beranda">
                                     <button type="button" class="relative flex rounded-md bg-red-800 px-3 py-2 text-white text-sm hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 hover:bg-gray-700">
                                         <span class="absolute -inset-1.5"></span>
@@ -67,11 +67,11 @@
             <div class="mx-auto flex items-center max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
                 <img class="border-r pr-4 w-20" src="{{ asset('/images/plnbgg.png') }}">
                 <h1 class="text-3xl ml-6 font-bold tracking-tight text-yellow-300">Seller Centre</h1>
-                <h2 class="ml-10 text-lg font-normal text-gray-300">Keuangan</h2>
+                <h2 class="ml-10 text-lg font-normal text-gray-300">Produk</h2>
                 <svg class="ml-6 text-lg text-slate-300 light:text-slate-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m10 16 4-4-4-4" />
                 </svg>
-                <h2 class="ml-10 text-lg font-normal text-black">Penghasilan Saya</h2>
+                <h2 class="ml-10 text-lg font-normal text-black">Produk Saya</h2>
             </div>
         </header>
 
@@ -109,7 +109,7 @@
                     </div>
 
                     <div x-data="{ open: false }" class="relative">
-                        <button @click="open = !open" class="w-full text-left block py-2 px-4 bg-white rounded shadow hover:bg-gray-100">
+                        <button @click="open = !open" class="w-full text-left block py-8 px-4 bg-white rounded shadow hover:bg-gray-100">
                             Produk
                             <svg :class="{'rotate-180': open, 'rotate-0': !open}" class="w-4 h-4 inline-block float-right transition-transform transform">
                                 <path d="M5 15l7-7 7 7" />
@@ -152,7 +152,7 @@
 
             <!-- Main Content -->
             <main class="w-3/4 bg-white p-4">
-                <h2 class="text-2xl font-semibold mb-6">Penghasilan Saya</h2>
+                <h2 class="text-2xl font-semibold mb-6">Produk Saya</h2>
                 <table class="min-w-full divide-y divide-gray-200">
                     <thead class="bg-gray-50">
                         <tr>
