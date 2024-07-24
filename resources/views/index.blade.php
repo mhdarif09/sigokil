@@ -134,56 +134,47 @@
         </div>
     </section>
 
-    <!-- Produk Terlaris Section -->
-    <section class="py-12 bg-gray-100">
-        <div class="container mx-auto text-center">
-            <h2 class="text-3xl font-bold mb-8">Produk Terlaris</h2>
-            <div class="flex justify-center space-x-8">
-                <!-- Example Product -->
-                <div class="w-1/3 bg-white rounded-lg p-4 shadow-lg">
-                    <img src="{{ asset ('/images/plnbgg.png')}}" alt="Produk 1" class="w-full object-cover rounded-lg mb-4">
-                    <h3 class="text-xl font-semibold mb-2">Produk 1</h3>
-                    <p class="text-lg font-bold text-red-800">Rp 100,000</p>
-                </div>
-                <div class="w-1/3 bg-white rounded-lg p-4 shadow-lg">
-                    <img src="{{ asset ('/images/plnbgg.png')}}" alt="Produk 2" class="w-full object-cover rounded-lg mb-4">
-                    <h3 class="text-xl font-semibold mb-2">Produk 2</h3>
-                    <p class="text-lg font-bold text-red-800">Rp 150,000</p>
-                </div>
-                <div class="w-1/3 bg-white rounded-lg p-4 shadow-lg">
-                    <img src="{{ asset ('/images/plnbgg.png')}}" alt="Produk 3" class="w-full  object-cover rounded-lg mb-4">
-                    <h3 class="text-xl font-semibold mb-2">Produk 3</h3>
-                    <p class="text-lg font-bold text-red-800">Rp 200,000</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Rekomendasi Section -->
+    <!-- Product List Section -->
     <section class="py-12">
         <div class="container mx-auto text-center">
-            <h2 class="text-3xl font-bold mb-8">Rekomendasi</h2>
-            <div class="flex justify-center space-x-8">
-                <!-- Example Recommendation -->
-                <div class="w-1/3 bg-white rounded-lg p-4 shadow-lg">
-                    <img src="{{ asset ('/images/plnbgg.png')}}" alt="Rekomendasi 1" class="w-full object-cover rounded-lg mb-4">
-                    <h3 class="text-xl font-semibold mb-2">Rekomendasi 1</h3>
-                    <p class="text-lg font-bold text-red-800">Rp 120,000</p>
-                </div>
-                <div class="w-1/3 bg-white rounded-lg p-4 shadow-lg">
-                    <img src="{{ asset ('/images/plnbgg.png')}}" alt="Rekomendasi 2" class="w-full  object-cover rounded-lg mb-4">
-                    <h3 class="text-xl font-semibold mb-2">Rekomendasi 2</h3>
-                    <p class="text-lg font-bold text-red-800">Rp 180,000</p>
-                </div>
-                <div class="w-1/3 bg-white rounded-lg p-4 shadow-lg">
-                    <img src="{{ asset ('/images/plnbgg.png')}}" alt="Rekomendasi 3" class="w-full  object-cover rounded-lg mb-4">
-                    <h3 class="text-xl font-semibold mb-2">Rekomendasi 3</h3>
-                    <p class="text-lg font-bold text-red-800">Rp 220,000</p>
-                </div>
+            <h2 class="text-3xl font-bold mb-8">Daftar Produk</h2>
+            <div class="flex flex-wrap justify-center space-x-8">
+                @foreach ($products as $product)
+                    <div class="w-1/3 bg-white rounded-lg p-4 shadow-lg mb-4">
+                        <img src="{{ asset('storage/' . $product->photo) }}" alt="{{ $product->name }}" class="w-full object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-semibold mb-2">{{ $product->name }}</h3>
+                        <p class="text-lg font-bold text-red-800">Rp {{ number_format($product->price, 0, ',', '.') }}</p>
+                        <p class="text-gray-600">{{ $product->description }}</p>
+                        <p class="text-gray-600">Stok: {{ $product->stock }}</p>
+                        <p class="text-gray-600">Kategori: {{ $product->category }}</p>
+                        <p class="text-gray-600">Kondisi: {{ $product->condition == 'new' ? 'Baru' : 'Bekas' }}</p>
+                        <p class="text-gray-600">Preorder: {{ $product->preorder ? 'Ya' : 'Tidak' }}</p>
+                    </div>
+                @endforeach
             </div>
         </div>
     </section>
 
+ <!-- Recommend List Section -->
+ <section class="py-12">
+        <div class="container mx-auto text-center">
+            <h2 class="text-3xl font-bold mb-8">Recommend Produk</h2>
+            <div class="flex flex-wrap justify-center space-x-8">
+                @foreach ($products as $product)
+                    <div class="w-1/3 bg-white rounded-lg p-4 shadow-lg mb-4">
+                        <img src="{{ asset('storage/' . $product->photo) }}" alt="{{ $product->name }}" class="w-full object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-semibold mb-2">{{ $product->name }}</h3>
+                        <p class="text-lg font-bold text-red-800">Rp {{ number_format($product->price, 0, ',', '.') }}</p>
+                        <p class="text-gray-600">{{ $product->description }}</p>
+                        <p class="text-gray-600">Stok: {{ $product->stock }}</p>
+                        <p class="text-gray-600">Kategori: {{ $product->category }}</p>
+                        <p class="text-gray-600">Kondisi: {{ $product->condition == 'new' ? 'Baru' : 'Bekas' }}</p>
+                        <p class="text-gray-600">Preorder: {{ $product->preorder ? 'Ya' : 'Tidak' }}</p>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </section>
     <!-- Hubungi Kami Section -->
     <section class="py-12 bg-red-800 text-white text-center">
         <div class="container mx-auto">

@@ -6,9 +6,8 @@ use App\Http\Controllers\SellerController;
 use App\Http\Controllers\SellerProductController;
 use App\Http\Middleware\CheckRole;
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 
 
 Route::middleware(['auth', CheckRole::class.':seller'])->group(function () {
@@ -61,5 +60,3 @@ Route::get('/rekeningbaru', function (){
     return view('seller.penghasilan.rekeningbank_saldosaya');
 });
 Auth::routes();
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
