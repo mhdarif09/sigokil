@@ -146,7 +146,7 @@
                                 </svg>
                             </button>
                             <div x-show="open" x-transition class="mt-2 space-y-2">
-                                <a href="#" class="block py-2 px-4 bg-white rounded shadow hover:bg-gray-100">Pesanan Saya</a>
+                                <a href="pesanan_saya" class="block py-2 px-4 bg-white rounded shadow hover:bg-gray-100">Pesanan Saya</a>
                                 <a href="#" class="block py-2 px-4 bg-white rounded shadow hover:bg-gray-100">Pembatalan</a>
                                 <a href="#" class="block py-2 px-4 bg-white rounded shadow hover:bg-gray-100">Pengaturan Pengiriman</a>
                             </div>
@@ -186,7 +186,7 @@
                                 </svg>
                             </button>
                             <div x-show="open" x-transition class="mt-2 space-y-2">                              
-                                <a href="#" class="block py-2 px-4 bg-white rounded shadow hover:bg-gray-100">Profil Toko </a>
+                                <a href="akun" class="block py-2 px-4 bg-white rounded shadow hover:bg-gray-100">Profil Toko </a>
                                 <a href="#" class="block py-2 px-4 bg-white rounded shadow hover:bg-gray-100">Pengaturan Toko</a>
                             </div>
                         </div>
@@ -213,7 +213,9 @@
                                         <p class="nomor-rekening">Nomor Rekening</p>
                                     </div>
                                 </div>
+                                <a href="rekeningbaru">
                                 <button class="ml-4 p-2 bg-blue-500 text-white rounded">Tambah Rekening Bank</button>
+                            </a>
                             </div>
                         </div>
                     </div>

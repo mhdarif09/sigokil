@@ -41,6 +41,7 @@
                     </div>
 
                     <header class="text-white p-4 flex justify-between items-center">
+<<<<<<< HEAD
                         <div class="flex items-center"></div>
                     
                         <a href="Akun">
@@ -55,6 +56,26 @@
                                 </svg>
                                 <span>Akun</span>
                             </button>
+=======
+                        <div class="flex items-center">
+                        </div>
+
+                        <a href="akun">
+                        <button type="button"
+                            class="relative flex rounded-md bg-red-800 px-3 py-2 text-white text-sm hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 hover:bg-gray-700">
+                            <span class="absolute -inset-1.5"></span>
+                            <span class="sr-only">View notifications</span>
+                            <svg class="w-6 h-6 text-white-800 dark:text-white" aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+                                viewBox="0 0 24 24">
+                                <path stroke="currentColor" stroke-width="2"
+                                    d="M7 17v1a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-1a3 3 0 0 0-3-3h-4a3 3 0 0 0-3 3Zm8-9a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                            </svg>
+                            <span>
+                                Akun
+                            </span>
+                        </button>
+>>>>>>> 0caf3644662b89ca4e7d102a37cf8e379de4a351
                         </a>
                     
                         <!-- Logout Button -->
@@ -98,8 +119,8 @@
             <!-- Mobile menu, show/hide based on menu state. -->
             <div x-show="isOpen" class="md:hidden" id="mobile-menu">
                 <div class="space-y-1 px-2 pb-3 pt-2 sm:px-3">
-                    <a href="#" class="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white"
-                        aria-current="page">Branda</a>
+                    <a href="beranda" class="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white"
+                        aria-current="page">Beranda</a>
                     <a href="seller" class="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white"
                         aria-current="page">Seller Centre</a>
                 </div>
@@ -127,7 +148,7 @@
                             </svg>
                         </button>
                         <div x-show="open" x-transition class="mt-2 space-y-2">
-                            <a href="#" class="block py-2 px-4 bg-white rounded shadow hover:bg-gray-100">Pesanan Saya</a>
+                            <a href="pesanan_saya" class="block py-2 px-4 bg-white rounded shadow hover:bg-gray-100">Pesanan Saya</a>
                             <a href="#" class="block py-2 px-4 bg-white rounded shadow hover:bg-gray-100">Pembatalan</a>
                             <a href="#" class="block py-2 px-4 bg-white rounded shadow hover:bg-gray-100">Pengaturan Pengiriman</a>
                         </div>
@@ -141,7 +162,7 @@
                             </svg>
                         </button>
                         <div x-show="open" x-transition class="mt-2 space-y-2">
-                            <a href="penghsilan" class="block py-2 px-4 bg-white rounded shadow hover:bg-gray-100">Penghasilan Saya</a>
+                            <a href="penghasilan" class="block py-2 px-4 bg-white rounded shadow hover:bg-gray-100">Penghasilan Saya</a>
                             <a href="saldo" class="block py-2 px-4 bg-white rounded shadow hover:bg-gray-100">Saldo Saya</a>
                             <a href="#" class="block py-2 px-4 bg-white rounded shadow hover:bg-gray-100">Rekening Bank</a>
                         </div>

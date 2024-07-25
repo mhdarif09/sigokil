@@ -75,7 +75,7 @@
 
         <header class="bg-white shadow">
             <div class="mx-auto flex items-center max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-                <img class="border-r pr-4 w-20" src="{{ asset('/images/plnbgg.png') }}">
+                <img class="border-r pr-4 w-20" src="{{ asset('/images/plnb.plg') }}">
                 <h1 class="text-3xl ml-6 font-bold tracking-tight text-yellow-300">Seller Centre</h1>
                 <h2 class="ml-10 text-lg font-normal text-gray-300">Keuangan</h2>
                 <svg class="ml-6 text-lg text-slate-300 light:text-slate-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
@@ -99,7 +99,7 @@
                             </svg>
                         </button>
                         <div x-show="open" x-transition class="mt-2 space-y-2">
-                            <a href="#" class="block py-2 px-4 bg-white rounded shadow hover:bg-gray-100">Pesanan Saya</a>
+                            <a href="pesanan_saya" class="block py-2 px-4 bg-white rounded shadow hover:bg-gray-100">Pesanan Saya</a>
                             <a href="#" class="block py-2 px-4 bg-white rounded shadow hover:bg-gray-100">Pembatalan</a>
                             <a href="#" class="block py-2 px-4 bg-white rounded shadow hover:bg-gray-100">Pengaturan Pengiriman</a>
                         </div>

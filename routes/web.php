@@ -9,7 +9,12 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\CartController;
 
+<<<<<<< HEAD
 Route::get('/', [IndexController::class, 'index'])->name('home');
+=======
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+>>>>>>> 0caf3644662b89ca4e7d102a37cf8e379de4a351
 
 
 Route::middleware(['auth', CheckRole::class.':seller'])->group(function () {
@@ -57,6 +62,7 @@ Route::get('/tarikdana', function (){
 Route::get('/akun', function (){
     return view('akun.index');
 });
+<<<<<<< HEAD
 Auth::routes();
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/product/{id}', [HomeController::class, 'show'])->name('product.show');
@@ -69,3 +75,10 @@ Route::post('/cart/add/{id}', [CartController::class, 'add'])->name('cart.add');
 Route::get('/cart', [CartController::class, 'show'])->name('cart');
 Route::get('/checkout', [CartController::class, 'checkout'])->name('checkout');
 Route::post('/checkout', [CartController::class, 'processCheckout'])->name('checkout.process');
+=======
+
+Route::get('/rekeningbaru', function (){
+    return view('seller.penghasilan.rekeningbank_saldosaya');
+});
+Auth::routes();
+>>>>>>> 0caf3644662b89ca4e7d102a37cf8e379de4a351
