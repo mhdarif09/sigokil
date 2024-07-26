@@ -133,7 +133,6 @@
         </div>
     </section>
 
-<<<<<<< HEAD
     <!-- Produk Terlaris Section -->
     <section class="py-12 bg-gray-100">
         <div class="container mx-auto text-center">
@@ -146,62 +145,30 @@
                             <h3 class="text-xl font-semibold mb-2">{{ $product->name }}</h3>
                             <p class="text-lg font-bold text-red-800">Rp {{ number_format($product->price, 0, ',', '.') }}</p>
                         </a>
-=======
-    <!-- Product List Section -->
-    <section class="py-12">
-        <div class="container mx-auto text-center">
-            <h2 class="text-3xl font-bold mb-8">Daftar Produk</h2>
-            <div class="flex flex-wrap justify-center space-x-8">
-                @foreach ($products as $product)
-                    <div class="w-1/3 bg-white rounded-lg p-4 shadow-lg mb-4">
-                        <img src="{{ asset('storage/' . $product->photo) }}" alt="{{ $product->name }}" class="w-full object-cover rounded-lg mb-4">
-                        <h3 class="text-xl font-semibold mb-2">{{ $product->name }}</h3>
-                        <p class="text-lg font-bold text-red-800">Rp {{ number_format($product->price, 0, ',', '.') }}</p>
-                        <p class="text-gray-600">{{ $product->description }}</p>
-                        <p class="text-gray-600">Stok: {{ $product->stock }}</p>
-                        <p class="text-gray-600">Kategori: {{ $product->category }}</p>
-                        <p class="text-gray-600">Kondisi: {{ $product->condition == 'new' ? 'Baru' : 'Bekas' }}</p>
-                        <p class="text-gray-600">Preorder: {{ $product->preorder ? 'Ya' : 'Tidak' }}</p>
->>>>>>> 0caf3644662b89ca4e7d102a37cf8e379de4a351
                     </div>
                 @endforeach
             </div>
         </div>
     </section>
 
-<<<<<<< HEAD
-=======
- <!-- Recommend List Section -->
- <section class="py-12">
+    <!-- Produk Terlaris Section -->
+    <section class="py-12 bg-gray-100">
         <div class="container mx-auto text-center">
-            <h2 class="text-3xl font-bold mb-8">Recommend Produk</h2>
-            <div class="flex flex-wrap justify-center space-x-8">
-                @foreach ($products as $product)
-                    <div class="w-1/3 bg-white rounded-lg p-4 shadow-lg mb-4">
-                        <img src="{{ asset('storage/' . $product->photo) }}" alt="{{ $product->name }}" class="w-full object-cover rounded-lg mb-4">
-                        <h3 class="text-xl font-semibold mb-2">{{ $product->name }}</h3>
-                        <p class="text-lg font-bold text-red-800">Rp {{ number_format($product->price, 0, ',', '.') }}</p>
-                        <p class="text-gray-600">{{ $product->description }}</p>
-                        <p class="text-gray-600">Stok: {{ $product->stock }}</p>
-                        <p class="text-gray-600">Kategori: {{ $product->category }}</p>
-                        <p class="text-gray-600">Kondisi: {{ $product->condition == 'new' ? 'Baru' : 'Bekas' }}</p>
-                        <p class="text-gray-600">Preorder: {{ $product->preorder ? 'Ya' : 'Tidak' }}</p>
+            <h2 class="text-3xl font-bold mb-8">Recommendation Produk</h2>
+            <div class="flex justify-center space-x-8">
+                @foreach($products as $product)
+                    <div class="w-1/3 bg-white rounded-lg p-4 shadow-lg">
+                        <a href="{{ route('product.show', $product->id) }}">
+                            <img src="{{ asset('storage/' . $product->photo) }}" alt="{{ $product->name }}" class="w-full object-cover rounded-lg mb-4">
+                            <h3 class="text-xl font-semibold mb-2">{{ $product->name }}</h3>
+                            <p class="text-lg font-bold text-red-800">Rp {{ number_format($product->price, 0, ',', '.') }}</p>
+                        </a>
                     </div>
                 @endforeach
             </div>
         </div>
     </section>
-    <!-- Hubungi Kami Section -->
-    <section class="py-12 bg-red-800 text-white text-center">
-        <div class="container mx-auto">
-            <h2 class="text-3xl font-bold mb-4">Hubungi Kami</h2>
-            <p class="text-lg">Untuk informasi lebih lanjut, hubungi kami di:</p>
-            <p class="text-lg font-semibold mt-2">Email: info@sigokilpalembang.com</p>
-            <p class="text-lg font-semibold">Telepon: 0812-3456-7890</p>
-        </div>
-    </section>
 
->>>>>>> 0caf3644662b89ca4e7d102a37cf8e379de4a351
     <!-- Footer -->
     <footer class="bg-gray-900 text-white">
         <div class="container mx-auto p-4">

@@ -7,7 +7,6 @@ use App\Models\Product;
 class HomeController extends Controller
 {
     /**
-<<<<<<< HEAD
      * Create a new controller instance.
      *
      * @return void
@@ -19,15 +18,11 @@ class HomeController extends Controller
 
     /**
      * Show the application dashboard with all products.
-=======
-     * Show the application dashboard.
->>>>>>> 0caf3644662b89ca4e7d102a37cf8e379de4a351
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
     {
-<<<<<<< HEAD
         $products = Product::all();
         return view('home', compact('products'));
     }
@@ -58,10 +53,5 @@ class HomeController extends Controller
         $totalPrice = $product->price * $quantity;
 
         return view('checkout', compact('product', 'quantity', 'totalPrice'));
-=======
-        // Fetch all products
-        $products = Product::all();
-        return view('index', compact('products'));
->>>>>>> 0caf3644662b89ca4e7d102a37cf8e379de4a351
     }
 }
