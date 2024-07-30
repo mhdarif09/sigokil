@@ -42,7 +42,7 @@
 
                     <header class="text-white p-4 flex justify-between items-center">
                         <div class="flex items-center"></div>
-                    
+
                         <a href="Akun">
                             <button type="button"
                                 class="relative flex rounded-md bg-red-800 px-3 py-2 text-white text-sm hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 hover:bg-gray-700">
@@ -56,7 +56,7 @@
                                 <span>Akun</span>
                             </button>
                         </a>
-                    
+
                         <!-- Logout Button -->
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
@@ -74,7 +74,7 @@
                         </form>
                         <!-- End of Logout Button -->
                     </header>
-                    
+
                         <div class="relative ml-3">
                             <div x-show="isOpen" x-transition:enter="transition ease-out duration-100 transform"
                                 x-transition:enter-start="opacity-0 scale-95"
@@ -147,7 +147,7 @@
                             <a href="#" class="block py-2 px-4 bg-white rounded shadow hover:bg-gray-100">Rekening Bank</a>
                         </div>
 
-                    
+
                         <div x-data="{ open: false }" class="relative">
                             <button @click="open = !open" class="w-full text-left block py-2 px-4 bg-white rounded shadow hover:bg-gray-100">
                                 Produk
@@ -157,7 +157,7 @@
                             </button>
                             <div x-show="open" x-transition class="mt-2 space-y-2">
                                 <a href="#" class="block py-2 px-4 bg-white rounded shadow hover:bg-gray-100">Produk Saya</a>
-                                <a href="seller/products/create" class="block py-2 px-4 bg-white rounded shadow hover:bg-gray-100">Tambah Produk Baru</a>                           
+                                <a href="seller/products/create" class="block py-2 px-4 bg-white rounded shadow hover:bg-gray-100">Tambah Produk Baru</a>
                             </div>
 
 
@@ -170,7 +170,7 @@
                                 </button>
                                 <div x-show="open" x-transition class="mt-2 space-y-2">
                                     <a href="#" class="block py-2 px-4 bg-white rounded shadow hover:bg-gray-100">Profil Toko</a>
-                                    <a href="#" class="block py-2 px-4 bg-white rounded shadow hover:bg-gray-100">Pengaturan Toko</a>                           
+                                    <a href="#" class="block py-2 px-4 bg-white rounded shadow hover:bg-gray-100">Pengaturan Toko</a>
                                 </div>
                 </nav>
             </aside>

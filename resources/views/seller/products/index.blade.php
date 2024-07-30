@@ -113,18 +113,59 @@
                             <a href="saldo" class="block py-2 px-4 bg-white rounded shadow hover:bg-gray-100">Saldo Dana</a>
                         </div>
                     </div>
+
+                    <div x-data="{ open: false }" class="relative">
+                        <button @click="open = !open" class="w-full text-left block py-2 px-4 bg-white rounded shadow hover:bg-gray-100">
+                            Produk
+                            <svg :class="{'rotate-180': open, 'rotate-0': !open}" class="w-4 h-4 inline-block float-right transition-transform transform">
+                                <path d="M5 15l7-7 7 7"/>
+                            </svg>
+                        </button>
+                        <div x-show="open" x-transition class="mt-2 space-y-2">
+                            <a href="#" class="block py-2 px-4 bg-white rounded shadow hover:bg-gray-100">Produk Saya</a>
+                            <a href="seller/products/create" class="block py-2 px-4 bg-white rounded shadow hover:bg-gray-100">Tambah Produk Baru</a>
+                        </div>
+                    </div>
+
+                    <div x-data="{ open: false }" class="relative">
+                        <button @click="open = !open" class="w-full text-left block py-2 px-4 bg-white rounded shadow hover:bg-gray-100">
+                            Toko
+                            <svg :class="{'rotate-180': open, 'rotate-0': !open}" class="w-4 h-4 inline-block float-right transition-transform transform">
+                                <path d="M5 15l7-7 7 7"/>
+                            </svg>
+                        </button>
+                        <div x-show="open" x-transition class="mt-2 space-y-2">
+                            <a href="#" class="block py-2 px-4 bg-white rounded shadow hover:bg-gray-100">Profil Toko</a>
+                            <a href="#" class="block py-2 px-4 bg-white rounded shadow hover:bg-gray-100">Pengaturan Toko</a>
+                        </div>
+                    </div>
+
                 </nav>
             </aside>
 
-            <!-- Main content -->
-            <main class="w-3/4 p-4">
-                <h2 class="text-2xl font-bold mb-4">Penghasilan Saya</h2>
-                <p>Halaman ini berisi informasi tentang penghasilan Anda.</p>
-                <!-- Add your main content here -->
-            </main>
+           <!-- Main content -->
+          <main class="w-3/4 p-4">
+            <h2 class="text-2xl font-bold mb-4">Produk Saya</h2>
+
+            <!-- Tampilkan pesan jika tidak ada produk -->
+            <?php if (empty($products)) : ?>
+                <p>Tidak ada produk yang tersedia.</p>
+            <?php else : ?>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <?php foreach ($products as $product) : ?>
+                        <div class="border p-4 rounded shadow">
+                            <!-- Tampilkan gambar produk -->
+                            <img src="{{ asset('storage/' . $product->photo) }}" alt="{{ $product->name }}" class="w-full h-48 object-cover mb-4 rounded">
+                            <h3 class="text-xl font-semibold mb-2"><?= htmlspecialchars($product['name']); ?></h3>
+                            <p class="mb-2"><?= htmlspecialchars($product['description']); ?></p>
+                            <p class="font-bold"><?= htmlspecialchars($product['price']); ?> IDR</p>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            <?php endif; ?>
+        </main>
         </div>
     </div>
 </body>
 
 </html>
-s
