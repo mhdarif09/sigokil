@@ -8,6 +8,7 @@ use App\Http\Middleware\CheckRole;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\Auth\RegisterController;
 
 Route::get('/', [IndexController::class, 'index'])->name('home');
 
@@ -62,7 +63,13 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/product/{id}', [HomeController::class, 'show'])->name('product.show');
 Route::post('/product/{id}/order', [HomeController::class, 'order'])->name('product.order');
 
-// cart
+// landing page register
+Route::get('auth/lp-register', function () {
+    return view('auth.lp-register');
+})->name('auth.lp-register');
+
+// UMKM Registration
+Route::get('register/umkm', [RegisterController::class, 'showUMKMRegistrationForm'])->name('register.umkm');
 
 // Cart Routes
 Route::post('/cart/add/{id}', [CartController::class, 'add'])->name('cart.add');

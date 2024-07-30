@@ -21,6 +21,12 @@ class RegisterController extends Controller
         $this->middleware('guest');
     }
 
+    public function showUMKMRegistrationForm()
+    {
+        return view('auth.register-umkm');
+    }
+
+
     protected function validator(array $data)
     {
         return Validator::make($data, [

@@ -21,9 +21,9 @@
             <h1 class="text-3xl font-bold">Si Gokil</h1>
             <nav class="flex justify-between items-center">
                 <div class="flex space-x-3">
-                    <a href="seller" class="px-3 flex items-center">
+                    <a href="{{ route('auth.lp-register') }}" class="px-3 flex items-center">
                         <i class="fas fa-store mr-1"></i> Seller Centre
-                    </a>
+                    </a>                    
                     <a href="#" class="px-3 flex items-center">
                         <i class="fas fa-info-circle mr-1"></i> Bantuan
                     </a>
