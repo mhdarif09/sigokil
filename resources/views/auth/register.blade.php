@@ -4,7 +4,7 @@
 <div class="min-h-screen flex flex-col items-center justify-center">
     <div class="w-full max-w-md">
         <div class="bg-white shadow-md rounded px-8 py-6">
-            <h2 class="text-2xl font-bold mb-6 text-center">{{ __('Register') }}</h2>
+            <h2 class="text-2xl font-bold mb-6 text-center">{{ __('Register Customer') }}</h2>
             <form method="POST" action="{{ route('register') }}">
                 @csrf
 
@@ -37,17 +37,8 @@
                     <input id="password-confirm" type="password" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500" name="password_confirmation" required autocomplete="new-password">
                 </div>
 
-                <div class="mb-4">
-                    <label for="role" class="block text-sm font-medium text-gray-700">{{ __('Register as') }}</label>
-                    <select id="role" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 @error('role') border-red-500 @enderror" name="role" required>
-                        <option value="customer">Customer</option>
-                        <option value="seller">Seller</option>
-                        <option value="admin">Admin</option>
-                    </select>
-                    @error('role')
-                        <span class="text-red-500 text-sm mt-2">{{ $message }}</span>
-                    @enderror
-                </div>
+                <!-- Hidden field for user type -->
+                <input type="hidden" name="user_type" value="customer">
 
                 <div class="flex items-center justify-between">
                     <button type="submit" class="w-full bg-indigo-500 text-white font-bold py-2 px-4 rounded-md hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">

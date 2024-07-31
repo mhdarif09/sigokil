@@ -26,14 +26,13 @@ class RegisterController extends Controller
         return view('auth.register-umkm');
     }
 
-
     protected function validator(array $data)
     {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'role' => ['required', 'string', 'in:seller,customer'],
+            'user_type' => ['required', 'in:umkm,customer'], // Validasi untuk user_type
         ]);
     }
 
@@ -43,16 +42,7 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'role' => $data['role'],
+            'user_type' => $data['user_type'], // Menyimpan user_type
         ]);
-    }
-
-    protected function registered(Request $request, $user)
-    {
-        if ($user->role === 'seller') {
-            return redirect()->route('seller.index');
-        }
-
-        return redirect($this->redirectPath());
     }
 }

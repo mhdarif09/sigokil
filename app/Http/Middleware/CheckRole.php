@@ -8,13 +8,20 @@ use Illuminate\Support\Facades\Auth;
 
 class CheckRole
 {
-    public function handle(Request $request, Closure $next, $role)
+    /**
+     * Handle an incoming request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Closure  $next
+     * @param  string  ...$roles
+     * @return mixed
+     */
+    public function handle(Request $request, Closure $next, ...$roles)
     {
-        if (!Auth::check() || Auth::user()->role !== $role) {
+        if (!Auth::check() || !in_array(Auth::user()->user_type, $roles)) {
             return redirect('/'); // or a 403 page
         }
 
         return $next($request);
     }
 }
-

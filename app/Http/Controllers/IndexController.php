@@ -47,6 +47,6 @@ class IndexController extends Controller
         $quantity = $request->input('quantity');
         $totalPrice = $product->price * $quantity;
 
-        return view('checkout', compact('product', 'quantity', 'totalPrice'));
+        return view('product.checkout', compact('product', 'quantity', 'totalPrice'));
     }
 }

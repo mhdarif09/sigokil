@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -29,18 +30,62 @@ class LoginController extends Controller
     }
 
     /**
-     * Handle a successful authentication attempt.
+     * Show the application login form.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function showLoginForm()
+    {
+        return view('auth.login');
+    }
+
+    /**
+     * Handle a login request to the application.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  mixed  $user
      * @return \Illuminate\Http\RedirectResponse
      */
-    protected function authenticated(Request $request, $user)
+    public function login(Request $request)
     {
-        if ($user->role === 'seller') {
-            return redirect()->route('seller.index');
+        $this->validateLogin($request);
+
+        // Check user credentials
+        $user = Auth::attempt($this->credentials($request));
+
+        if ($user) {
+            $user = Auth::user();
+            if ($user->user_type === 'umkm') {
+                return redirect()->route('seller.index');
+            } elseif ($user->user_type === 'customer') {
+                return redirect()->route('index');
+            }
         }
 
-        return redirect($this->redirectPath());
+        return $this->sendFailedLoginResponse($request);
+    }
+
+    /**
+     * Validate the user's login request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return void
+     */
+    protected function validateLogin(Request $request)
+    {
+        $request->validate([
+            'email' => ['required', 'string', 'email'],
+            'password' => ['required', 'string'],
+        ]);
+    }
+
+    /**
+     * Get the credentials for the given request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return array
+     */
+    protected function credentials(Request $request)
+    {
+        return $request->only('email', 'password');
     }
 }

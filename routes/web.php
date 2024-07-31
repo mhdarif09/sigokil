@@ -9,22 +9,19 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\UmkmRegisterController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\CheckoutController;
 
 Route::get('/', [IndexController::class, 'index'])->name('home');
 
 
-Route::middleware(['auth', CheckRole::class.':seller'])->group(function () {
+Route::middleware(['auth', CheckRole::class.':umkm'])->group(function () {
     Route::get('/seller/products', [SellerProductController::class, 'index'])->name('seller.products.index');
     Route::get('/seller/products/create', [SellerProductController::class, 'create'])->name('seller.products.create');
     Route::post('/seller/products', [SellerProductController::class, 'store'])->name('seller.products.store');
 });
-Route::get('/cart', function () {
-    return view('keranjang.cart');
-});
 
-Route::get('/checkout', function () {
-    return view('keranjang.checkout');
-});
 
 Route::get('/seller', [SellerController::class, 'index'])->name('seller.index');
 
@@ -69,10 +66,17 @@ Route::get('auth/lp-register', function () {
 })->name('auth.lp-register');
 
 // UMKM Registration
-Route::get('register/umkm', [RegisterController::class, 'showUMKMRegistrationForm'])->name('register.umkm');
+Route::get('register-umkm', [UmkmRegisterController::class, 'showRegistrationForm'])->name('register-umkm');
+Route::post('register-umkm', [UmkmRegisterController::class, 'register'])->name('register.umkm');
 
-// Cart Routes
-Route::post('/cart/add/{id}', [CartController::class, 'add'])->name('cart.add');
-Route::get('/cart', [CartController::class, 'show'])->name('cart');
-Route::get('/checkout', [CartController::class, 'checkout'])->name('checkout');
-Route::post('/checkout', [CartController::class, 'processCheckout'])->name('checkout.process');
+// Login untuk UMKM
+Route::get('/login/{type}', [LoginController::class, 'showLoginForm'])->name('login.form');
+Route::post('/login/{type}', [LoginController::class, 'login'])->name('login.submit');
+
+Route::resource('/checkout', CheckoutController::class)->only([
+    'create', 'store'
+]);
+
+
+Route::get('/orders/{order}', [CheckoutController::class, 'show'])->name('orders.show');
+Route::post('/cart/add/{product}', [CartController::class, 'add'])->name('cart.add');

@@ -64,9 +64,9 @@
                     </div>
                 </div>
                 <div class="mt-6 text-center">
-                    @if (Route::has('register'))
-                    <a class="text-sm font-medium text-red-800 hover:text-red-800" href="{{ route('register') }}">
-                        Belum punya akun? DAFTAR
+                    @if (Route::has('login'))
+                    <a class="text-sm font-medium text-red-800 hover:text-red-800" href="{{ route('login') }}">
+                        Sudah punya akun? Login
                     </a>
                     @endif
                 </div>

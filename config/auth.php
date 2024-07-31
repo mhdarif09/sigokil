@@ -40,6 +40,11 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+
+        'umkm' => [
+            'driver' => 'session',
+            'provider' => 'umkms',
+        ],
     ],
 
     /*
@@ -63,6 +68,11 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => env('AUTH_MODEL', App\Models\User::class),
+        ],
+
+        'umkms' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Umkm::class,
         ],
 
         // 'users' => [
