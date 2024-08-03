@@ -59,7 +59,7 @@
                                     <i class="fas fa-sign-in-alt mr-1"></i> Log in
                                 </a>
                                 @if (Route::has('register'))
-                                    <a href="{{ route('register') }}" class="px-3 flex items-center">
+                                    <a href="{{ route('auth.lp-register') }}" class="px-3 flex items-center">
                                         <i class="fas fa-user-plus mr-1"></i> Register
                                     </a>
                                 @endif

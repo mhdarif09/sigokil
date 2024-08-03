@@ -84,7 +84,7 @@
             <div class="mx-auto flex items-center max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
                 <img class="border-r pr-4 w-20" src="{{ asset('/images/plnbgg.png') }}">
                 <h1 class="text-3xl ml-6 font-bold tracking-tight text-yellow-300">Seller Centre</h1>
-                <h2 class="ml-10 text-lg font-normal text-gray-300">Produk</h2>
+                                <a href="{{ route('seller.products.index') }}" class="block py-2 px-4 bg-white rounded shadow hover:bg-gray-100">Produk Saya</a>
                 <svg class="ml-6 text-lg text-slate-300 light:text-slate-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m10 16 4-4-4-4" />
                 </svg>
@@ -133,7 +133,7 @@
                             </svg>
                         </button>
                         <div x-show="open" x-transition class="mt-2 space-y-2">
-                            <a href="#" class="block py-2 px-4 bg-white rounded shadow hover:bg-gray-100">Produk Saya</a>
+                            <a href="{{ route('seller.products.index') }}" class="block py-2 px-4 bg-white rounded shadow hover:bg-gray-100">Produk Saya</a>
                             <a href="{{ route('seller.products.create') }}" class="block py-2 px-4 bg-white rounded shadow hover:bg-gray-100">Tambah Produk Baru</a>
                         </div>
                     </div>

@@ -30,7 +30,7 @@
                         @guest
                             <a href="{{ route('login') }}" class="px-3">Log in</a>
                             @if (Route::has('register'))
-                                <a href="{{ route('register') }}" class="px-3">Register</a>
+                                <a href="{{ route('auth.lp-register') }}" class="px-3">Register</a>
                             @endif
                         @else
                             <a href="{{ url('/dashboard') }}" class="px-3">Dashboard</a>

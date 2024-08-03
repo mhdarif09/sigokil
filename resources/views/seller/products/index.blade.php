@@ -122,7 +122,7 @@
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         @foreach ($products as $product)
             <div class="bg-white p-4 rounded shadow">
-                <img src="{{ $product->photo }}" alt="{{ $product->name }}" class="w-full h-40 object-cover mb-4 rounded">
+                <img src="{{ asset('storage/' . $product->photo) }}" alt="{{ $product->name }}" class="w-full h-40 object-cover mb-4 rounded">
                 <h2 class="text-xl font-semibold mb-2">{{ $product->name }}</h2>
                 <p class="text-gray-700 mb-2">{{ $product->description }}</p>
                 <p class="text-lg font-bold mb-2">Rp{{ number_format($product->price, 0, ',', '.') }}</p>

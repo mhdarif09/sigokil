@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -35,7 +34,6 @@ class CheckoutController extends Controller
             'state' => 'required|string|max:255',
             'address' => 'required|string|max:255',
             'postal_code' => 'required|string|max:10',
-            'payment_method' => 'required|string|max:255',
         ]);
 
         $cartItems = Cart::where('user_id', Auth::id())->get();
@@ -43,6 +41,7 @@ class CheckoutController extends Controller
         $shippingCost = $this->calculateShippingCost();
         $total = $subtotal + $shippingCost;
 
+        // Buat pesanan
         $order = Order::create([
             'user_id' => Auth::id(),
             'first_name' => $request->first_name,
@@ -53,7 +52,7 @@ class CheckoutController extends Controller
             'address' => $request->address,
             'postal_code' => $request->postal_code,
             'total' => $total,
-            'payment_method' => $request->payment_method,
+            'payment_method' => 'qris', // Set langsung ke 'qris'
         ]);
 
         foreach ($cartItems as $item) {
@@ -65,9 +64,11 @@ class CheckoutController extends Controller
             ]);
         }
 
+        // Hapus item dari keranjang setelah pesanan dibuat
         Cart::where('user_id', Auth::id())->delete();
 
-        return redirect()->route('orders.show', $order->id)->with('success', 'Order placed successfully.');
+        // Redirect ke halaman QRIS payment
+        return redirect()->route('qris.payment', ['order' => $order->id]);
     }
 
     protected function calculateSubtotal($cartItems)
@@ -81,6 +82,6 @@ class CheckoutController extends Controller
 
     protected function calculateShippingCost()
     {
-        return 5000; // Example static cost
+        return 5000; // Contoh biaya statis
     }
 }
