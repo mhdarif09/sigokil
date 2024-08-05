@@ -59,12 +59,12 @@
                 </div>
 
                 <div class="mb-4">
-                <label for="email" class="block text-sm font-medium text-gray-700">{{ __('EMAIL') }}</label>
-                <input id="email" type="email" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-red-500 focus:border-red-500 @error('email') border-red-500 @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-                @error('email')
-                    <span class="text-red-500 text-sm mt-2">{{ $message }}</span>
-                @enderror
-            </div>
+                    <label for="email" class="block text-sm font-medium text-gray-700">{{ __('EMAIL') }}</label>
+                    <input id="email" type="email" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-red-500 focus:border-red-500 @error('email') border-red-500 @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+                    @error('email')
+                        <span class="text-red-500 text-sm mt-2">{{ $message }}</span>
+                    @enderror
+                </div>
 
                 <div class="mb-4">
                     <label for="password-confirm" class="block text-sm font-medium text-gray-700">{{ __('KONFIRMASI PASSWORD') }}</label>
@@ -87,6 +87,7 @@
         </form>
     </div>
 </div>
+
 <!-- Popup Kategori -->
 <div id="category-popup" class="fixed z-10 inset-0 overflow-y-auto hidden">
     <div class="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
@@ -102,15 +103,15 @@
                             {{ __('Pilih Kategori UMKM') }}
                         </h3>
                         <div class="mt-2">
-                            <select id="popup-category" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-red-500 focus:border-red-500">
-                                <option value="Fashion">Fashion</option>
-                                <option value="Kuliner">Kuliner</option>
-                                <option value="Rental">Rental</option>
-                                <option value="Laundry">Laundry</option>
-                                <option value="Service">Service</option>
-                                <option value="Kerajinan Tangan">Kerajinan Tangan</option>
-                                <option value="Lainnya">Lainnya</option>
-                            </select>
+                            <ul id="popup-category-list" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-red-500 focus:border-red-500">
+                                <li class="p-2 cursor-pointer hover:bg-gray-200" onclick="selectCategory('Fashion')">Fashion</li>
+                                <li class="p-2 cursor-pointer hover:bg-gray-200" onclick="selectCategory('Kuliner')">Kuliner</li>
+                                <li class="p-2 cursor-pointer hover:bg-gray-200" onclick="selectCategory('Rental')">Rental</li>
+                                <li class="p-2 cursor-pointer hover:bg-gray-200" onclick="selectCategory('Laundry')">Laundry</li>
+                                <li class="p-2 cursor-pointer hover:bg-gray-200" onclick="selectCategory('Service')">Service</li>
+                                <li class="p-2 cursor-pointer hover:bg-gray-200" onclick="selectCategory('Kerajinan Tangan')">Kerajinan Tangan</li>
+                                <li class="p-2 cursor-pointer hover:bg-gray-200" onclick="selectCategory('Lainnya')">Lainnya</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -118,9 +119,6 @@
             <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
                 <button type="button" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm" onclick="closeCategoryPopup()">
                     {{ __('Batal') }}
-                </button>
-                <button type="button" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm" onclick="selectCategory()">
-                    {{ __('Pilih') }}
                 </button>
             </div>
         </div>
@@ -136,9 +134,8 @@
         document.getElementById('category-popup').classList.add('hidden');
     }
 
-    function selectCategory() {
-        const selectedCategory = document.getElementById('popup-category').value;
-        document.getElementById('category').value = selectedCategory;
+    function selectCategory(category) {
+        document.getElementById('category').value = category;
         closeCategoryPopup();
     }
 </script>
