@@ -37,7 +37,7 @@
                     <div class="flex space-x-3 relative" x-data="{ dropdownOpen: false }">
                         @if (Route::has('login'))
                             @auth
-                                <a href="{{ route('keranjang.home') }}" class="px-3 flex items-center">
+                                <a href="{{ route('keranjang.cart') }}" class="px-3 flex items-center">
                                     <i class="fas fa-shopping-cart mr-1"></i> Keranjang
                                 </a>
                                 <div class="relative">

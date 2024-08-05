@@ -8,6 +8,28 @@
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css">
+    <style>
+        /* Swiper container setup */
+        .swiper-container {
+            width: 100%;
+            height: 400px; /* Set fixed height for slider */
+        }
+
+        /* Swiper slide styling */
+        .swiper-slide {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Ensure images fill their container while keeping aspect ratio */
+        .swiper-slide img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: cover; /* Keeps aspect ratio and covers slider area */
+        }
+    </style>
 </head>
 <body class="bg-gray-100">
     <!-- Header -->
@@ -29,8 +51,28 @@
                 <!-- Product Name -->
                 <h3 class="text-3xl font-bold mb-4">{{ $product->name }}</h3>
 
-                <!-- Product Image -->
-                <img src="{{ asset('storage/' . $product->photo) }}" alt="{{ $product->name }}" class="w-full h-60 object-cover rounded-lg mb-6">
+                <!-- Product Image Slider -->
+                <div class="swiper-container mb-6">
+                    <div class="swiper-wrapper">
+                        @if ($product->main_photo)
+                            <div class="swiper-slide">
+                                <img src="{{ asset('storage/' . $product->main_photo) }}" alt="{{ $product->name }}">
+                            </div>
+                        @endif
+                        @foreach (['product_photo_1', 'product_photo_2', 'product_photo_3'] as $photoField)
+                            @if (!empty($product->$photoField))
+                                <div class="swiper-slide">
+                                    <img src="{{ asset('storage/' . $product->$photoField) }}" alt="Additional photo">
+                                </div>
+                            @endif
+                        @endforeach
+                    </div>
+                    <!-- Add Pagination -->
+                    <div class="swiper-pagination"></div>
+                    <!-- Add Navigation -->
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
 
                 <!-- Product Price -->
                 <p class="text-2xl font-semibold text-gray-800 mb-4">Rp {{ number_format($product->price, 0, ',', '.') }}</p>
@@ -53,5 +95,26 @@
             </div>
         </div>
     </section>
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var swiper = new Swiper('.swiper-container', {
+                loop: true,
+                autoplay: {
+                    delay: 3000,
+                },
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+            });
+        });
+    </script>
 </body>
 </html>

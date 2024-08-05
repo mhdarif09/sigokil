@@ -15,7 +15,7 @@
             <h1 class="text-3xl font-bold">Si Gokil</h1>
             <nav class="flex justify-between items-center">
                 <a href="{{ route('home') }}" class="px-3 flex items-center">Beranda</a>
-                <a href="{{ route('cart.show') }}" class="px-3 flex items-center">Keranjang</a>
+                <a href="{{ route('keranjang.cart') }}" class="px-3 flex items-center">Keranjang</a>
                 <a href="#" class="px-3 flex items-center">Pesanan saya</a>
                 <a href="#" class="px-3 flex items-center">Bantuan</a>
                 <a href="{{ route('login') }}" class="px-3 flex items-center">Akun</a>
@@ -32,7 +32,6 @@
                     <div class="flex flex-col md:flex-row justify-between items-center border-b py-4">
                         <div class="flex items-center">
                             <input type="checkbox" class="mr-2">
-                            <img src="{{ asset('storage/' . $details['photo']) }}" class="w-20 h-20 object-cover rounded-lg mr-4" alt="{{ $details['name'] }}">
                             <div>
                                 <h3 class="text-xl font-semibold">{{ $details['name'] }}</h3>
                                 <p class="text-gray-500">Nama Toko</p>
@@ -47,8 +46,11 @@
                                 <button class="text-gray-500 px-2">+</button>
                             </div>
                             <p class="text-gray-700">Rp {{ number_format($details['price'] * $details['quantity'], 0, ',', '.') }}</p>
-                            <a href="{{ route('cart.remove', $id) }}" class="text-red-500"><i class="fas fa-trash"></i> Hapus</a>
-                        </div>
+                            <form action="{{ route('cart.remove', $id) }}" method="POST" onsubmit="return confirm('Are you sure you want to remove this item?');">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="text-red-500"><i class="fas fa-trash"></i> Hapus</button>
+                            </form>                        </div>
                     </div>
                 @endforeach
                 <div class="flex justify-between items-center mt-6">
@@ -58,7 +60,7 @@
                     <div>
                         <p class="text-xl font-bold">Total: Rp {{ number_format($total, 0, ',', '.') }}</p>
                     </div>
-                    <a href="{{ route('checkout') }}" class="bg-red-800 text-white px-6 py-2 rounded-lg">Beli Sekarang</a>
+                    <a href="{{ route('checkout.create') }}" class="bg-red-800 text-white px-6 py-2 rounded-lg">Beli Sekarang</a>
                 </div>
             @else
                 <p class="text-lg">Keranjang Anda kosong.</p>

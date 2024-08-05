@@ -1,9 +1,8 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Product; // Ensure you have a Product model
+use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
 
 class SellerProductController extends Controller
@@ -31,11 +30,15 @@ class SellerProductController extends Controller
             'stock' => 'required|integer',
             'condition' => 'required|in:new,used',
             'preorder' => 'required|boolean',
-            // Add other validations as necessary
+            'main_photo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'product_photo_1' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'product_photo_2' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'product_photo_3' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'video' => 'nullable|image|mimes:jpg,png|max:10000',
         ]);
 
         $product = new Product();
-        $product->user_id = Auth::id(); // Assuming the Product model has a user_id field
+        $product->user_id = Auth::id();
         $product->name = $request->input('name');
         $product->category = $request->input('category');
         $product->description = $request->input('description');
@@ -44,10 +47,21 @@ class SellerProductController extends Controller
         $product->stock = $request->input('stock');
         $product->condition = $request->input('condition');
         $product->preorder = $request->input('preorder');
-        // Handle file uploads for photos and videos
-        if ($request->hasFile('photo')) {
-            $product->photo = $request->file('photo')->store('photos', 'public');
+
+        // Handle main photo upload
+        if ($request->hasFile('main_photo')) {
+            $product->main_photo = $request->file('main_photo')->store('photos', 'public');
         }
+
+        // Handle product photo uploads
+        $photoFields = ['product_photo_1', 'product_photo_2', 'product_photo_3'];
+        foreach ($photoFields as $photoField) {
+            if ($request->hasFile($photoField)) {
+                $product->{$photoField} = $request->file($photoField)->store('photos', 'public');
+            }
+        }
+
+        // Handle file upload for video
         if ($request->hasFile('video')) {
             $product->video = $request->file('video')->store('videos', 'public');
         }

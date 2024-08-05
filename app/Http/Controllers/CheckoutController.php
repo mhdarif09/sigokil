@@ -11,18 +11,21 @@ use Illuminate\Support\Facades\Auth;
 class CheckoutController extends Controller
 {
     public function create()
-    {
-        $cartItems = Cart::where('user_id', Auth::id())->get();
-        foreach ($cartItems as $item) {
-            $item->product = Product::find($item->product_id);
-        }
+{
+    $cart = session()->get('cart', []);
+    $cartItems = collect($cart)->map(function ($item) {
+        $product = Product::find($item['product_id']);
+        return (object) array_merge($item, ['product' => $product]);
+    });
 
-        $subtotal = $this->calculateSubtotal($cartItems);
-        $shippingCost = $this->calculateShippingCost();
-        $total = $subtotal + $shippingCost;
+    $subtotal = $this->calculateSubtotal($cartItems);
+    $shippingCost = $this->calculateShippingCost();
+    $total = $subtotal + $shippingCost;
 
-        return view('checkout.create', compact('cartItems', 'subtotal', 'shippingCost', 'total'));
-    }
+    return view('checkout.create', compact('cartItems', 'subtotal', 'shippingCost', 'total'));
+}
+
+
 
     public function store(Request $request)
     {

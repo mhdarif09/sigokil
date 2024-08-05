@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\KeranjangController;
 use App\Http\Controllers\SellerController;
 use App\Http\Controllers\SellerProductController;
 use App\Http\Middleware\CheckRole;
@@ -26,36 +25,10 @@ Route::middleware(['auth', CheckRole::class.':umkm'])->group(function () {
 
 Route::get('/seller', [SellerController::class, 'index'])->name('seller.index');
 
-Route::get('/pembayaran', function () {
-    return view('keranjang.pembayaran');
-});
-
-Route::get('/keranjang', [KeranjangController::class, 'index'])->name('keranjang.home');
+Route::get('/cart', [CartController::class, 'index'])->name('keranjang.cart');
+Route::delete('/cart/{id}', [CartController::class, 'remove'])->name('cart.remove');
 
 
-Route::get('/Pesanan_saya', function () {
-    return view('Pesanan_saya');
-});
-
-Route::get('/pembayaranberhasil', function (){
-    return view('keranjang.pembayaranberhasil');
-});
-
-Route::get('/penghasilan', function (){
-    return view('seller.penghasilan.penghasilansaya');
-});
-
-Route::get('/saldo', function (){
-    return view('seller.penghasilan.saldosaya');
-});
-
-Route::get('/tarikdana', function (){
-    return view('seller.penghasilan.tarikdana');
-});
-
-Route::get('/akun', function (){
-    return view('akun.index');
-});
 Auth::routes();
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/product/{id}', [HomeController::class, 'show'])->name('product.show');

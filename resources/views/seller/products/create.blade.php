@@ -158,40 +158,39 @@
         <form action="{{ route('seller.products.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="mb-4">
-                <label for="photo" class="block text-gray-700 font-medium mb-2">Product Photo</label>
-                <input type="file" name="photo" id="photo" class="block w-full text-sm text-gray-600 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100" required>
-            </div>
-            <div class="mb-4">
-                <label for="video" class="block text-gray-700 font-medium mb-2">Product Video</label>
-                <input type="file" name="video" id="video" class="block w-full text-sm text-gray-600 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100">
-            </div>
-            <div class="mb-4">
                 <label for="name" class="block text-gray-700 font-medium mb-2">Product Name</label>
-                <input type="text" name="name" id="name" class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm" required>
+                <input type="text" name="name" id="name"
+                       class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm" required>
             </div>
             <div class="mb-4">
                 <label for="category" class="block text-gray-700 font-medium mb-2">Category</label>
-                <input type="text" name="category" id="category" class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm" required>
+                <input type="text" name="category" id="category"
+                       class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm" required>
             </div>
             <div class="mb-4">
                 <label for="description" class="block text-gray-700 font-medium mb-2">Description</label>
-                <textarea name="description" id="description" class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm" required></textarea>
+                <textarea name="description" id="description"
+                          class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm" required></textarea>
             </div>
             <div class="mb-4">
                 <label for="weight" class="block text-gray-700 font-medium mb-2">Weight</label>
-                <input type="number" name="weight" id="weight" class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm" required>
+                <input type="number" name="weight" id="weight"
+                       class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm" required>
             </div>
             <div class="mb-4">
                 <label for="price" class="block text-gray-700 font-medium mb-2">Price</label>
-                <input type="number" name="price" id="price" class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm" required>
+                <input type="number" name="price" id="price"
+                       class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm" required>
             </div>
             <div class="mb-4">
                 <label for="stock" class="block text-gray-700 font-medium mb-2">Stock</label>
-                <input type="number" name="stock" id="stock" class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm" required>
+                <input type="number" name="stock" id="stock"
+                       class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm" required>
             </div>
             <div class="mb-4">
                 <label for="condition" class="block text-gray-700 font-medium mb-2">Condition</label>
-                <select name="condition" id="condition" class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm" required>
+                <select name="condition" id="condition"
+                        class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm" required>
                     <option value="new">New</option>
                     <option value="used">Used</option>
                 </select>
@@ -205,7 +204,33 @@
                     <label for="preorder_no">No</label>
                 </div>
             </div>
-            <button type="submit" class="w-full bg-blue-500 text-white font-bold py-2 px-4 rounded-md hover:bg-blue-600">Save</button>
+            <!-- Multiple file upload for photos -->
+<div class="mb-4">
+    <label for="main_photo" class="block text-gray-700 font-medium mb-2">Main Photo</label>
+    <input type="file" name="main_photo" id="main_photo" class="block w-full text-sm text-gray-600 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100">
+</div>
+<div class="mb-4">
+    <label for="product_photo_1" class="block text-gray-700 font-medium mb-2">Product Photo 1</label>
+    <input type="file" name="product_photo_1" id="product_photo_1" class="block w-full text-sm text-gray-600 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100">
+</div>
+<div class="mb-4">
+    <label for="product_photo_2" class="block text-gray-700 font-medium mb-2">Product Photo 2</label>
+    <input type="file" name="product_photo_2" id="product_photo_2" class="block w-full text-sm text-gray-600 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100">
+</div>
+<div class="mb-4">
+    <label for="product_photo_3" class="block text-gray-700 font-medium mb-2">Product Photo 3</label>
+    <input type="file" name="product_photo_3" id="product_photo_3" class="block w-full text-sm text-gray-600 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100">
+</div>
+
+            <!-- Single file upload for video -->
+            <div class="mb-4">
+                <label for="video" class="block text-gray-700 font-medium mb-2">Product Video</label>
+                <input type="file" name="video" id="video"
+                       class="block w-full text-sm text-gray-600 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100">
+            </div>
+            <button type="submit"
+                    class="w-full bg-blue-500 text-white font-bold py-2 px-4 rounded-md hover:bg-blue-600">Save
+            </button>
         </form>
     </div>
 </body>

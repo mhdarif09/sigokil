@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -13,18 +14,21 @@ class Product extends Model
         'name',
         'category',
         'description',
-        'photo',
-        'video',
         'weight',
         'price',
         'stock',
         'condition',
         'preorder',
+        'main_photo',
+        'product_photo_1',
+        'product_photo_2',
+        'product_photo_3',
+        'video',
     ];
 
+    // Relationship to User (assuming a user can have many products)
     public function user()
     {
         return $this->belongsTo(User::class);
     }
 }
-

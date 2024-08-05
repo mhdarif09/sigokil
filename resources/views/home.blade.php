@@ -81,7 +81,7 @@
                 @foreach($products as $product)
                     <div class="w-1/3 bg-white rounded-lg p-4 shadow-lg">
                         <a href="{{ route('product.show', $product->id) }}">
-                            <img src="{{ asset('storage/' . $product->photo) }}" alt="{{ $product->name }}" class="w-full object-cover rounded-lg mb-4">
+                            <img src="{{ asset('storage/' . $product->main_photo) }}" alt="{{ $product->name }}" class="w-full object-cover rounded-lg mb-4">
                             <h3 class="text-xl font-semibold mb-2">{{ $product->name }}</h3>
                             <p class="text-lg font-bold text-red-800">Rp {{ number_format($product->price, 0, ',', '.') }}</p>
                         </a>
@@ -99,7 +99,7 @@
                 @foreach($products as $product)
                     <div class="w-1/3 bg-white rounded-lg p-4 shadow-lg">
                         <a href="{{ route('product.show', $product->id) }}">
-                            <img src="{{ asset('storage/' . $product->photo) }}" alt="{{ $product->name }}" class="w-full object-cover rounded-lg mb-4">
+                            <img src="{{ asset('storage/' . $product->main_photo) }}" alt="{{ $product->name }}" class="w-full object-cover rounded-lg mb-4">
                             <h3 class="text-xl font-semibold mb-2">{{ $product->name }}</h3>
                             <p class="text-lg font-bold text-red-800">Rp {{ number_format($product->price, 0, ',', '.') }}</p>
                         </a>
