@@ -184,8 +184,8 @@
                                 </svg>
                             </button>
                             <div x-show="open" x-transition class="mt-2 space-y-2">
-                                <a href="#" class="block py-2 px-4 bg-white rounded shadow hover:bg-gray-100">Produk Saya</a>
-                                <a href="seller/products/create" class="block py-2 px-4 bg-white rounded shadow hover:bg-gray-100">Tambah Produk Baru</a>
+                                <a href="{{ route('seller.products.index') }}" class="block py-2 px-4 bg-white rounded shadow hover:bg-gray-100">Produk Saya</a>
+                                <a href="seller/products/create" class="block py-2 px-4 bg-white rounded shadow hover:bg-gray-100">Tambah Produk Baru</a>                          
                             </div>
                         </div>
 

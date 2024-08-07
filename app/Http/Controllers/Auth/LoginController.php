@@ -57,7 +57,7 @@ class LoginController extends Controller
             if ($user->user_type === 'umkm') {
                 return redirect()->route('seller.index');
             } elseif ($user->user_type === 'customer') {
-                return redirect()->route('index');
+                return redirect()->route('home');
             }
         }
 
