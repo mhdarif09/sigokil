@@ -67,3 +67,26 @@ Route::get('/penghasilan/saldo-saya', [PenghasilanController::class, 'saldoSaya'
 
 Route::get('/orders/{order}', [CheckoutController::class, 'show'])->name('orders.show');
 Route::post('/cart/add/{product}', [CartController::class, 'add'])->name('cart.add');
+
+
+Route::get('/laporan', function () {
+    return view('admin.laporan');
+});
+Route::get('/laporan-tinggi', function () {
+    return view('admin.laporan-tinggi');
+});
+Route::get('/laporan-sedang', function () {
+    return view('admin.laporan-sedang');
+});
+Route::get('/laporan-rendah', function () {
+    return view('admin.laporan-rendah');
+});
+Route::get('/form-laporan', function () {
+    return view('admin.form-laporan');
+});
+
+Route::get('/help', [HomeController::class, 'help'])->name('help');
+
+Route::get('/form-respon', function () {
+    return view('admin.form-respon');
+});

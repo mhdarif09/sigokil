@@ -49,4 +49,19 @@ class IndexController extends Controller
 
         return view('product.checkout', compact('product', 'quantity', 'totalPrice'));
     }
+    public function help()
+    {
+        $products = Product::all();
+        return view('help', compact('products'));
+    }
+    public function formbantuan()
+    {
+        $products = Product::all();
+        return view('form-bantuan', compact('products'));
+    }
+    public function riwayatlaporan()
+    {
+        $products = Product::all();
+        return view('riwayat-laporan', compact('products'));
+    }
 }

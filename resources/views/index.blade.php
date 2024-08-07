@@ -24,7 +24,7 @@
                     <a href="{{ route('login') }}" class="px-3 flex items-center">
                         <i class="fas fa-store mr-1"></i> Seller Centre
                     </a>                    
-                    <a href="#" class="px-3 flex items-center">
+                    <a href="/help" class="px-3 flex items-center">
                         <i class="fas fa-info-circle mr-1"></i> Bantuan
                     </a>
                 </div>
