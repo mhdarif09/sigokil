@@ -12,6 +12,7 @@ use App\Http\Controllers\UmkmRegisterController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\QRISController;
+use App\Http\Controllers\PenghasilanController;
 
 Route::get('/', [IndexController::class, 'index'])->name('home');
 
@@ -53,6 +54,15 @@ Route::resource('/checkout', CheckoutController::class)->only([
 
 
 Route::get('/qris-payment/{order}', [QRISController::class, 'show'])->name('qris.payment');
+Route::get('/qris/accept/{orderId}', [QRISController::class, 'accept'])->name('qris.accept');
+Route::get('/qris/reject/{orderId}', [QRISController::class, 'reject'])->name('qris.reject');
+
+Route::get('/qris/pembayaranberhasil', function () {
+    return view('qris.pembayaranberhasil');
+})->name('qris.pembayaranberhasil');
+
+Route::get('/penghasilan-saya', [PenghasilanController::class, 'index'])->name('penghasilan.saya');
+Route::get('/penghasilan/saldo-saya', [PenghasilanController::class, 'saldoSaya'])->name('penghasilan.saldoSaya');
 
 
 Route::get('/orders/{order}', [CheckoutController::class, 'show'])->name('orders.show');

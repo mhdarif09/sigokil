@@ -1,5 +1,7 @@
 <?php
 
+// UmkmRegisterController.php
+
 namespace App\Http\Controllers;
 
 use App\Models\Umkm;
@@ -50,7 +52,7 @@ class UmkmRegisterController extends Controller
         Umkm::create([
             'store_name' => $request->store_name,
             'owner_name' => $request->owner_name,
-            'email'=>$request->email,
+            'email' => $request->email,
             'password' => Hash::make($request->password),
             'store_address' => $request->store_address,
             'store_photo' => $storePhotoPath,
@@ -59,6 +61,6 @@ class UmkmRegisterController extends Controller
             'category' => $request->category,
         ]);
 
-        return redirect()->route('seller.index')->with('success', 'Registration successful. Please log in.');
+        return redirect()->route('login')->with('success', 'Registration successful. Please log in.');
     }
 }

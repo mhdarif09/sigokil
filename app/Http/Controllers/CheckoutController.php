@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -11,21 +12,19 @@ use Illuminate\Support\Facades\Auth;
 class CheckoutController extends Controller
 {
     public function create()
-{
-    $cart = session()->get('cart', []);
-    $cartItems = collect($cart)->map(function ($item) {
-        $product = Product::find($item['product_id']);
-        return (object) array_merge($item, ['product' => $product]);
-    });
+    {
+        $cart = session()->get('cart', []);
+        $cartItems = collect($cart)->map(function ($item) {
+            $product = Product::find($item['product_id']);
+            return (object) array_merge($item, ['product' => $product]);
+        });
 
-    $subtotal = $this->calculateSubtotal($cartItems);
-    $shippingCost = $this->calculateShippingCost();
-    $total = $subtotal + $shippingCost;
+        $subtotal = $this->calculateSubtotal($cartItems);
+        $shippingCost = $this->calculateShippingCost();
+        $total = $subtotal + $shippingCost;
 
-    return view('checkout.create', compact('cartItems', 'subtotal', 'shippingCost', 'total'));
-}
-
-
+        return view('checkout.create', compact('cartItems', 'subtotal', 'shippingCost', 'total'));
+    }
 
     public function store(Request $request)
     {
@@ -39,7 +38,12 @@ class CheckoutController extends Controller
             'postal_code' => 'required|string|max:10',
         ]);
 
-        $cartItems = Cart::where('user_id', Auth::id())->get();
+        $cart = session()->get('cart', []);
+        $cartItems = collect($cart)->map(function ($item) {
+            $product = Product::find($item['product_id']);
+            return (object) array_merge($item, ['product' => $product]);
+        });
+
         $subtotal = $this->calculateSubtotal($cartItems);
         $shippingCost = $this->calculateShippingCost();
         $total = $subtotal + $shippingCost;
@@ -56,19 +60,20 @@ class CheckoutController extends Controller
             'postal_code' => $request->postal_code,
             'total' => $total,
             'payment_method' => 'qris', // Set langsung ke 'qris'
+            'shipping_cost' => $shippingCost,
         ]);
 
         foreach ($cartItems as $item) {
             OrderItem::create([
                 'order_id' => $order->id,
-                'product_id' => $item->product_id,
+                'product_id' => $item->product->id,
                 'quantity' => $item->quantity,
-                'price' => $item->price,
+                'price' => $item->product->price,
             ]);
         }
 
         // Hapus item dari keranjang setelah pesanan dibuat
-        Cart::where('user_id', Auth::id())->delete();
+        session()->forget('cart');
 
         // Redirect ke halaman QRIS payment
         return redirect()->route('qris.payment', ['order' => $order->id]);
@@ -78,7 +83,7 @@ class CheckoutController extends Controller
     {
         $subtotal = 0;
         foreach ($cartItems as $item) {
-            $subtotal += $item->price * $item->quantity;
+            $subtotal += $item->product->price * $item->quantity;
         }
         return $subtotal;
     }

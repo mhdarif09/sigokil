@@ -1,27 +1,6 @@
-<!DOCTYPE html>
-<html lang="en" class="h-full bg-gray-100">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Cart - Si Gokil</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
-    @vite('resources/css/app.css')
-</head>
-<body class="bg-gray-100">
-    <!-- Header -->
-    <header class="bg-red-800 text-white">
-        <div class="container mx-auto p-4 flex justify-between items-center">
-            <h1 class="text-3xl font-bold">Si Gokil</h1>
-            <nav class="flex justify-between items-center">
-                <a href="{{ route('home') }}" class="px-3 flex items-center">Beranda</a>
-                <a href="{{ route('keranjang.cart') }}" class="px-3 flex items-center">Keranjang</a>
-                <a href="#" class="px-3 flex items-center">Pesanan saya</a>
-                <a href="#" class="px-3 flex items-center">Bantuan</a>
-                <a href="{{ route('login') }}" class="px-3 flex items-center">Akun</a>
-            </nav>
-        </div>
-    </header>
+@extends('layouts.app')
+
+@section ('content')
 
     <!-- Cart Section -->
     <section class="container mx-auto py-12">
@@ -67,5 +46,4 @@
             @endif
         </div>
     </section>
-</body>
-</html>
+@endsection

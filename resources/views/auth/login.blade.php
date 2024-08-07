@@ -23,14 +23,14 @@
                 <h1 class="text-3xl font-bold">Si Gokil</h1>
                 <nav class="flex justify-between items-center">
                     <div class="flex space-x-3">
-                        <a href="#" class="px-3">Seller Centre</a>
+                        <a href="{{ route('login') }}" class="px-3">Seller Centre</a>
                         <a href="#" class="px-3">Bantuan</a>
                     </div>
                     <div class="flex space-x-3">
                         @guest
                             <a href="{{ route('login') }}" class="px-3">Log in</a>
                             @if (Route::has('register'))
-                                <a href="{{ route('register') }}" class="px-3">Register</a>
+                                <a href="{{ route('auth.lp-register') }}" class="px-3">Register</a>
                             @endif
                         @else
                             <a href="{{ url('/dashboard') }}" class="px-3">Dashboard</a>
@@ -40,8 +40,20 @@
             </div>
         </header>
         <div class="min-h-screen flex items-center justify-center bg-cover bg-center" style="background-image: url('{{ asset('images/background.png') }}'); background-color: rgba(0, 0, 0, 0.5); background-blend-mode: overlay;">
-            <div class="max-w-md w-full bg-white bg-opacity-90 shadow-md rounded-lg p-8 space-y-6">
-                <h2 class="text-2xl font-bold text-center text-gray-900">Log in</h2>
+            
+            <div class="max-w-md w-full">
+                @if(session('success'))
+                <div class="bg-green-500 text-white font-bold rounded-t px-4 py-2">
+                    Success
+                </div>
+                <div class="border border-t-0 border-green-400 rounded-b bg-green-100 px-4 py-3 text-green-700">
+                    <p>{{ session('success') }}</p>
+                </div>
+                @endif
+
+                <div class="bg-white bg-opacity-90 shadow-md rounded-lg p-8 space-y-6">
+                   
+                    <h2 class="text-2xl font-bold text-center text-gray-900">Log in</h2>
                 <form method="POST" action="{{ route('login') }}">
                     @csrf
                     <div>
@@ -82,7 +94,7 @@
                     </div>
                     <div class="mt-6 text-center">
                         @if (Route::has('register'))
-                        <a class="text-sm font-medium text-red-800 hover:text-red-800" href="{{ route('register') }}">
+                        <a class="text-sm font-medium text-red-800 hover:text-red-800" href="{{ route ('auth.lp-register') }}">
                             Belum punya akun? DAFTAR
                         </a>
                         @endif

@@ -86,6 +86,18 @@
                     </div>
                 </div>
 
+                <div class="flex items-center space-x-4">
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <button type="submit" class="relative flex rounded-md bg-red-800 px-3 py-2 text-white text-sm hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 hover:bg-gray-700">
+                            <span class="sr-only">Logout</span>
+                            <svg class="w-6 h-6 text-white-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                <path stroke="currentColor" stroke-width="2" d="M10 16l4-4-4-4M16 12H8" />
+                            </svg>
+                            <span>Logout</span>
+                        </button>
+                    </form>
+
                 <div class="relative" @click.away="accountMenu = false" @close.stop="accountMenu = false">
                     <button @click="accountMenu = !accountMenu" type="button" class="relative flex rounded-md bg-red-800 px-3 py-2 text-white text-sm hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 hover:bg-gray-700">
                         <span class="sr-only">View notifications</span>
@@ -100,8 +112,7 @@
                          x-transition:leave-end="opacity-0 scale-95"
                          class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
                          role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
-                        <a href="akun" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Akun Saya</a>
-                        <a href="logout" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-1">Log Out</a>
+                        <a href="akun" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Akun Saya</a>                        
                     </div>
                 </div>
             </div>
@@ -199,7 +210,7 @@
                         <div class="header">
                             <div class="info-saldo flex flex-col items-start">
                                 <p class="info-tambahan mb-4 font-bold">Saldo</p>
-                                <p class="jumlah-saldo mb-4">Rp. XXX</p>
+                                <p class="jumlah-saldo mb-4">Rp {{ number_format($saldo, 0, ',', '.') }}</p>
                                 <a href="tarikdana">
                                 <button class="tarik-dana-button bg-blue-500 text-white font-bold py-2 px-4 rounded">Tarik Dana</button>
                                 </a>
