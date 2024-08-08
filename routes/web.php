@@ -61,9 +61,18 @@ Route::get('/qris/pembayaranberhasil', function () {
     return view('qris.pembayaranberhasil');
 })->name('qris.pembayaranberhasil');
 
-Route::get('/penghasilan-saya', [PenghasilanController::class, 'index'])->name('penghasilan.saya');
-Route::get('/penghasilan/saldo-saya', [PenghasilanController::class, 'saldoSaya'])->name('penghasilan.saldoSaya');
+Route::get('/penghasilan-saya', [PenghasilanController::class, 'index'])->name('seller.penghasilan.penghasilansaya');
 
+// View Saldo Saya
+Route::get('/saldo-saya', [PenghasilanController::class, 'saldoSaya'])->name('seller.penghasilan.saldosaya');
+
+// View and Handle Tarik Dana
+Route::get('/tarik-dana', [PenghasilanController::class, 'tarikDanaView'])->name('seller.penghasilan.tarikdana.view');
+Route::post('/tarik-dana', [PenghasilanController::class, 'tarikDana'])->name('seller.penghasilan.tarikdana');
+
+// View and Handle Tambah Rekening
+Route::get('/tambah-rekening', [PenghasilanController::class, 'tambahRekeningView'])->name('seller.penghasilan.tambahrekening.view');
+Route::post('/tambah-rekening', [PenghasilanController::class, 'tambahRekening'])->name('seller.penghasilan.tambahrekening');
 
 Route::get('/orders/{order}', [CheckoutController::class, 'show'])->name('orders.show');
 Route::post('/cart/add/{product}', [CartController::class, 'add'])->name('cart.add');

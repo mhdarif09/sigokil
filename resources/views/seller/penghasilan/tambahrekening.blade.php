@@ -250,28 +250,35 @@
                         <p class="text-center">+ Tambah Rekening Bank Baru</p>
                     </div>
 
-                    <!-- Modal -->
-                    <div x-show="showModal" class="fixed inset-0 flex items-center justify-center z-50" style="display: none;">
-                        <div class="bg-black opacity-50 absolute inset-0" @click="showModal = false"></div>
-                        <div class="bg-white p-6 rounded shadow-lg relative z-10">
-                            <h2 class="text-xl font-bold mb-4">Rekening Bank</h2>
-                            <div class="mb-4">
-                                <label for="bank" class="block text-sm font-medium text-gray-700">Bank</label>
-                                <input type="text" id="bank" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
-                            </div>
-                            <div class="mb-4">
-                                <label for="nomor_rekening" class="block text-sm font-medium text-gray-700">Nomor Rekening</label>
-                                <input type="text" id="nomor_rekening" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
-                            </div>
-                            <div class="flex justify-end">
-                                <button @click="showModal = false" class="bg-gray-300 text-gray-800 px-4 py-2 rounded mr-2">Tutup</button>
-                                <button @click="showModal = false" class="bg-yellow-500 text-white px-4 py-2 rounded">Konfirmasi</button>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+                   <!-- Modal -->
+<div x-show="showModal" class="fixed inset-0 flex items-center justify-center z-50" style="display: none;">
+    <div class="bg-black opacity-50 absolute inset-0" @click="showModal = false"></div>
+    <div class="bg-white p-6 rounded shadow-lg relative z-10">
+        <h2 class="text-xl font-bold mb-4">Rekening Bank</h2>
+        <form action="{{ route('seller.penghasilan.tambahrekening') }}" method="POST">
+            @csrf
+            <div class="mb-4">
+                <label for="bank_name" class="block text-sm font-medium text-gray-700">Nama Bank</label>
+                <input type="text" name="bank_name" id="bank_name" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" required>
             </div>
-        </div>
-    </main>
+            <div class="mb-4">
+                <label for="account_number" class="block text-sm font-medium text-gray-700">Nomor Rekening</label>
+                <input type="text" name="account_number" id="account_number" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" required>
+            </div>
+            <div class="mb-4">
+                <label for="account_holder" class="block text-sm font-medium text-gray-700">Nama Pemegang Rekening</label>
+                <input type="text" name="account_holder" id="account_holder" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" required>
+            </div>
+            <div class="flex justify-end">
+                <button @click="showModal = false" type="button" class="bg-gray-300 text-gray-800 px-4 py-2 rounded mr-2">Tutup</button>
+                <button type="submit" class="bg-yellow-500 text-white px-4 py-2 rounded">Tambah Rekening</button>
+            </div>
+        </form>
+    </div>
+</div>
+</section>
+</div>
+</div>
+</main>
 </body>
 </html>

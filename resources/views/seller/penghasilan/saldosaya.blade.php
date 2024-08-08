@@ -211,7 +211,7 @@
                             <div class="info-saldo flex flex-col items-start">
                                 <p class="info-tambahan mb-4 font-bold">Saldo</p>
                                 <p class="jumlah-saldo mb-4">Rp {{ number_format($saldo, 0, ',', '.') }}</p>
-                                <a href="tarikdana">
+                                <a href="{{route ('seller.penghasilan.tarikdana')}}">
                                 <button class="tarik-dana-button bg-blue-500 text-white font-bold py-2 px-4 rounded">Tarik Dana</button>
                                 </a>
                             </div>
@@ -224,7 +224,7 @@
                                         <p class="nomor-rekening">Nomor Rekening</p>
                                     </div>
                                 </div>
-                                <a href="rekeningbaru">
+                                <a href="{{route ('seller.penghasilan.tambahrekening.view')}}">
                                 <button class="ml-4 p-2 bg-blue-500 text-white rounded">Tambah Rekening Bank</button>
                             </a>
                             </div>

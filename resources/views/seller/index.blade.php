@@ -142,8 +142,8 @@
                             </svg>
                         </button>
                         <div x-show="open" x-transition class="mt-2 space-y-2">
-                            <a href="{{ route('penghasilan.saya') }}" class="block py-2 px-4 bg-white rounded shadow hover:bg-gray-100">Penghasilan Saya</a>
-                            <a href="{{route ('penghasilan.saldoSaya')}}" class="block py-2 px-4 bg-white rounded shadow hover:bg-gray-100">Saldo Saya</a>
+                            <a href="{{ route('seller.penghasilan.penghasilansaya') }}" class="block py-2 px-4 bg-white rounded shadow hover:bg-gray-100">Penghasilan Saya</a>
+                            <a href="{{route ('seller.penghasilan.saldosaya')}}" class="block py-2 px-4 bg-white rounded shadow hover:bg-gray-100">Saldo Saya</a>
                             <a href="#" class="block py-2 px-4 bg-white rounded shadow hover:bg-gray-100">Rekening Bank</a>
                         </div>
 
