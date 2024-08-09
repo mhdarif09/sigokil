@@ -45,6 +45,11 @@ return [
             'driver' => 'session',
             'provider' => 'umkms',
         ],
+        'admin' => [
+            'driver' => 'session',
+            'provider' => 'admins',
+        ],
+        
     ],
 
     /*
@@ -74,6 +79,12 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\Umkm::class,
         ],
+        
+        'admins' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Admin::class,
+        ],
+        
 
         // 'users' => [
         //     'driver' => 'database',

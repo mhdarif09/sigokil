@@ -13,6 +13,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\QRISController;
 use App\Http\Controllers\PenghasilanController;
+use App\Http\Controllers\AdminAuthController;
 
 Route::get('/', [IndexController::class, 'index'])->name('home');
 
@@ -67,8 +68,8 @@ Route::get('/penghasilan-saya', [PenghasilanController::class, 'index'])->name('
 Route::get('/saldo-saya', [PenghasilanController::class, 'saldoSaya'])->name('seller.penghasilan.saldosaya');
 
 // View and Handle Tarik Dana
-Route::get('/tarik-dana', [PenghasilanController::class, 'tarikDanaView'])->name('seller.penghasilan.tarikdana.view');
-Route::post('/tarik-dana', [PenghasilanController::class, 'tarikDana'])->name('seller.penghasilan.tarikdana');
+Route::get('/seller/penghasilan/tarikdana', [PenghasilanController::class, 'tarikDanaView'])->name('seller.penghasilan.tarikdana');
+Route::post('/seller/penghasilan/tarikdana', [PenghasilanController::class, 'tarikDana'])->name('seller.penghasilan.tarikdana');
 
 // View and Handle Tambah Rekening
 Route::get('/tambah-rekening', [PenghasilanController::class, 'tambahRekeningView'])->name('seller.penghasilan.tambahrekening.view');
@@ -99,3 +100,9 @@ Route::get('/help', [HomeController::class, 'help'])->name('help');
 Route::get('/form-respon', function () {
     return view('admin.form-respon');
 });
+
+Route::get('/admin/login', [AdminAuthController::class, 'showLoginForm'])->name('admin.login');
+Route::post('/admin/login', [AdminAuthController::class, 'login']);
+Route::post('/admin/logout', [AdminAuthController::class, 'logout'])->name('admin.logout');    Route::get('/admin/transactions', [PenghasilanController::class, 'adminTransactions'])->name('admin.transactions');
+    Route::post('/admin/transactions/{transaction}/accept', [PenghasilanController::class, 'acceptWithdrawal'])->name('admin.transactions.accept');
+    Route::post('/admin/transactions/{transaction}/reject', [PenghasilanController::class, 'rejectWithdrawal'])->name('admin.transactions.reject');

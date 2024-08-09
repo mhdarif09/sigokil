@@ -133,78 +133,57 @@
                 <h2 class="ml-10 text-lg font-normal text-gray-300">Tarik Dana</h2>
             </div>
         </header>
-
-    <main>
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 py-6">
-            <div class="saldo-section">
-                <div class="header">
-                    <div class="detail-bank">
-                        <img src="path/to/bank/logo.png" alt="Logo Bank">
-                        <div>
-                            <p class="nama-bank">Bank ABC</p>
-                            <p class="nomor-rekening">1234567890</p>
+        <div class="container saldo-section">
+            <h1>Tarik Dana</h1>
+            <form action="{{ route('seller.penghasilan.tarikdana') }}" method="POST">
+                @csrf
+                <div class="container saldo-section">
+                    <h1>Tarik Dana</h1>
+                    <form action="{{ route('seller.penghasilan.tarikdana') }}" method="POST">
+                        @csrf
+                        <div class="header">
+                            <div class="detail-bank">
+                                <img src="path/to/bank-logo.png" alt="Bank Logo">
+                                <div>
+                                    <h2 class="nama-bank">Nama Bank: {{ $bankAccount->bank_name }}</h2>
+                                    <p class="nomor-rekening">Nomor Rekening: {{ $bankAccount->account_number }}</p>
+                                </div>
+                            </div>
+                            <div class="info-saldo">
+                                <p class="jumlah-saldo">Saldo: Rp. {{ number_format($currentBalance) }}</p>
+                                <input type="hidden" name="bank_account_id" value="{{ $bankAccount->id }}">
+                                <input type="hidden" name="balance" value="{{ $currentBalance }}">
+                                <label for="amount">Jumlah yang ingin ditarik:</label>
+                                <input type="number" id="amount" name="amount" class="border p-2 w-full mb-4" placeholder="Masukkan jumlah" required>
+                                <button class="tarik-dana-button" type="submit">Tarik Dana</button>
+                            </div>
                         </div>
-                    </div>
-                    <div class="info-saldo">
-                        <p class="jumlah-saldo">Rp 10.000.000,-</p>
-                        <button class="tarik-dana-button">Tarik Dana</button>
-                    </div>
+                    </form>
                 </div>
-                <form id="withdrawForm" action="/tarik-dana" method="POST">
-                    @csrf
-                    <div class="mb-4">
-                        <label for="jumlah" class="block text-sm font-medium text-gray-700">Jumlah</label>
-                        <input type="text" name="jumlah" id="jumlah" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                    </div>
-                    <div class="mb-4">
-                        <label for="rekening_bank" class="block text-sm font-medium text-gray-700">Rekening Bank</label>
-                        <input type="text" name="rekening_bank" id="rekening_bank" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" readonly>
-                    </div>
-                    <div class="mb-4">
-                        <label for="nama_bank" class="block text-sm font-medium text-gray-700">Nama Bank</label>
-                        <input type="text" name="nama_bank" id="nama_bank" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" readonly>
-                    </div>
-                    <div class="mb-4">
-                        <label for="pemegang_rekening" class="block text-sm font-medium text-gray-700">Pemegang Rekening</label>
-                        <input type="text" name="pemegang_rekening" id="pemegang_rekening" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" readonly>
-                    </div>
-                    <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded-md">Tarik Dana</button>
-                </form>
-            </div>
+                
 
-            <div class="transaksi-section">
-                <div class="header">
-                    <h2 class="text-lg font-medium text-gray-900">Riwayat Transaksi</h2>
-                </div>
-                <table>
-                    <thead>
+        <div class="container transaksi-section">
+            <h1>Riwayat Transaksi</h1>
+            <table>
+                <thead>
                     <tr>
                         <th>Tanggal</th>
                         <th>Jumlah</th>
                         <th>Status</th>
                     </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>01-01-2023</td>
-                        <td>Rp 5.000.000,-</td>
-                        <td>Sukses</td>
-                    </tr>
-                    <tr>
-                        <td>15-01-2023</td>
-                        <td>Rp 2.000.000,-</td>
-                        <td>Sukses</td>
-                    </tr>
-                    <tr>
-                        <td>20-01-2023</td>
-                        <td>Rp 3.000.000,-</td>
-                        <td>Sukses</td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
+                </thead>
+                <tbody>
+                    @foreach ($transactions as $transaction)
+                        <tr>
+                            <td>{{ $transaction->created_at }}</td>
+                            <td>Rp. {{ number_format($transaction->amount) }}</td>
+                            <td>{{ $transaction->status }}</td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
         </div>
-    </main>
+    </div>
 </div>
 </body>
 </html>

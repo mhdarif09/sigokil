@@ -241,14 +241,19 @@
                         <table>
                             <thead>
                                 <tr>
-                                    <th>No</th>
-                                    <th>Tanggal Penarikan Dana</th>
-                                    <th>Jumlah Dana</th>
+                                    <th>Tanggal</th>
+                <th>Jumlah</th>
+                <th>Status</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <!-- Add transaction rows here -->
-                            </tbody>
+                                @foreach ($withdrawals as $withdrawal)
+                                <tr>
+                                    <td>{{ $withdrawal->created_at->format('d M Y H:i') }}</td>
+                                    <td>Rp {{ number_format($withdrawal->amount, 0, ',', '.') }}</td>
+                                    <td>{{ ucfirst($withdrawal->status) }}</td>
+                                </tr>
+                            @endforeach                            </tbody>
                         </table>
                     </div>
                 </div>
